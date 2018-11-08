@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="tcp网络编程基础 1.tcp客户端  from socket import * 创建socket  tcp_client_socket = socket(AF_INET, SOCK_STREAM) 目的信息  server_ip = input(“请输入服务器ip:”)  server_port = int(input(“请输入服务器port:”)) 链接服务器  tcp_client_sock">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tcp网络编程基础">
+<meta property="og:url" content="https://github.com/KingDragon-Baron/2018/11/08/tcp网络编程基础/index.html">
+<meta property="og:site_name" content="King Dragon">
+<meta property="og:description" content="tcp网络编程基础 1.tcp客户端  from socket import * 创建socket  tcp_client_socket = socket(AF_INET, SOCK_STREAM) 目的信息  server_ip = input(“请输入服务器ip:”)  server_port = int(input(“请输入服务器port:”)) 链接服务器  tcp_client_sock">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-08T15:50:35.060Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tcp网络编程基础">
+<meta name="twitter:description" content="tcp网络编程基础 1.tcp客户端  from socket import * 创建socket  tcp_client_socket = socket(AF_INET, SOCK_STREAM) 目的信息  server_ip = input(“请输入服务器ip:”)  server_port = int(input(“请输入服务器port:”)) 链接服务器  tcp_client_sock">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/KingDragon-Baron/2018/11/08/tcp网络编程基础/"/>
+
+
+
+
+
+  <title>tcp网络编程基础 | King Dragon</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">King Dragon</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Stay Hungry, Stay Foolish</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/KingDragon-Baron/2018/11/08/tcp网络编程基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Baron">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="King Dragon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">tcp网络编程基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T23:46:33+08:00">
+                2018-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/summary/" itemprop="url" rel="index">
+                    <span itemprop="name">summary</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="tcp网络编程基础"><a href="#tcp网络编程基础" class="headerlink" title="tcp网络编程基础"></a>tcp网络编程基础</h2><hr>
+<h4 id="1-tcp客户端"><a href="#1-tcp客户端" class="headerlink" title="1.tcp客户端"></a>1.tcp客户端</h4><p>  from socket import *</p>
+<h1 id="创建socket"><a href="#创建socket" class="headerlink" title="创建socket"></a>创建socket</h1><p>  tcp_client_socket = socket(AF_INET, SOCK_STREAM)</p>
+<h1 id="目的信息"><a href="#目的信息" class="headerlink" title="目的信息"></a>目的信息</h1><p>  server_ip = input(“请输入服务器ip:”)<br>  server_port = int(input(“请输入服务器port:”))</p>
+<h1 id="链接服务器"><a href="#链接服务器" class="headerlink" title="链接服务器"></a>链接服务器</h1><p>  tcp_client_socket.connect((server_ip, server_port))</p>
+<h1 id="提示用户输入数据"><a href="#提示用户输入数据" class="headerlink" title="提示用户输入数据"></a>提示用户输入数据</h1><p>  send_data = input(“请输入要发送的数据：”)</p>
+<p>  tcp_client_socket.send(send_data.encode(“gbk”))</p>
+<h1 id="接收对方发送过来的数据，最大接收1024个字节"><a href="#接收对方发送过来的数据，最大接收1024个字节" class="headerlink" title="接收对方发送过来的数据，最大接收1024个字节"></a>接收对方发送过来的数据，最大接收1024个字节</h1><p>  recvData = tcp_client_socket.recv(1024)<br>  print(‘接收到的数据为:’, recvData.decode(‘gbk’))</p>
+<h1 id="关闭套接字"><a href="#关闭套接字" class="headerlink" title="关闭套接字"></a>关闭套接字</h1><p>  tcp_client_socket.close()</p>
+<h4 id="2-tcp服务器"><a href="#2-tcp服务器" class="headerlink" title="2.tcp服务器"></a>2.tcp服务器</h4><p>流程如下：<br>1.socket创建一个套接字<br>2.bind绑定ip和port<br>3.listen使套接字变为可以被动链接<br>4.accept等待客户端的链接<br>5.recv/send接收发送数据</p>
+<p>代码如下：<br>  from socket import *</p>
+<h1 id="创建socket-1"><a href="#创建socket-1" class="headerlink" title="创建socket"></a>创建socket</h1><p>  tcp_server_socket = socket(AF_INET, SOCK_STREAM)</p>
+<h1 id="本地信息（不写ip默认本机127-0-0-1）"><a href="#本地信息（不写ip默认本机127-0-0-1）" class="headerlink" title="本地信息（不写ip默认本机127.0.0.1）"></a>本地信息（不写ip默认本机127.0.0.1）</h1><p>  address = (‘127.0.0.1’, 7788)</p>
+<h1 id="绑定"><a href="#绑定" class="headerlink" title="绑定"></a>绑定</h1><p>  tcp_server_socket.bind(address)</p>
+<h1 id="使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了"><a href="#使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了" class="headerlink" title="使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了"></a>使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了</h1><p>  #监听<br>  tcp_server_socket.listen(128)</p>
+<h1 id="如果有新的客户端来链接服务器，那么就产生一个新的套接字专门为这个客户端服务"><a href="#如果有新的客户端来链接服务器，那么就产生一个新的套接字专门为这个客户端服务" class="headerlink" title="如果有新的客户端来链接服务器，那么就产生一个新的套接字专门为这个客户端服务"></a>如果有新的客户端来链接服务器，那么就产生一个新的套接字专门为这个客户端服务</h1><h1 id="client-socket用来为这个客户端服务"><a href="#client-socket用来为这个客户端服务" class="headerlink" title="client_socket用来为这个客户端服务"></a>client_socket用来为这个客户端服务</h1><h1 id="tcp-server-socket就可以省下来专门等待其他新客户端的链接"><a href="#tcp-server-socket就可以省下来专门等待其他新客户端的链接" class="headerlink" title="tcp_server_socket就可以省下来专门等待其他新客户端的链接"></a>tcp_server_socket就可以省下来专门等待其他新客户端的链接</h1><p>  client_socket, clientAddr = tcp_server_socket.accept()</p>
+<h1 id="接收对方发送过来的数据"><a href="#接收对方发送过来的数据" class="headerlink" title="接收对方发送过来的数据"></a>接收对方发送过来的数据</h1><p>  recv_data = client_socket.recv(1024)  # 接收1024个字节<br>  print(‘接收到的数据为:’, recv_data.decode(‘gbk’))</p>
+<h1 id="发送一些数据到客户端"><a href="#发送一些数据到客户端" class="headerlink" title="发送一些数据到客户端"></a>发送一些数据到客户端</h1><p>  client_socket.send(“thank you !”.encode(‘gbk’))</p>
+<h1 id="关闭为这个客户端服务的套接字，只要关闭了，就意味着为不能再为这个客户端服务了，如果还需要服务，只能再次重新连接"><a href="#关闭为这个客户端服务的套接字，只要关闭了，就意味着为不能再为这个客户端服务了，如果还需要服务，只能再次重新连接" class="headerlink" title="关闭为这个客户端服务的套接字，只要关闭了，就意味着为不能再为这个客户端服务了，如果还需要服务，只能再次重新连接"></a>关闭为这个客户端服务的套接字，只要关闭了，就意味着为不能再为这个客户端服务了，如果还需要服务，只能再次重新连接</h1><p>  client_socket.close()</p>
+<h4 id="3-tcp的3次握手"><a href="#3-tcp的3次握手" class="headerlink" title="3.tcp的3次握手"></a>3.tcp的3次握手</h4><p>  client(客户端连接connect)——–&gt;server(服务端监听listen)———&gt;client(服务端告诉客户端链接已建立)———-&gt;server(客户端告诉服务端链接已建立)</p>
+<h4 id="4-tcp的4次挥手"><a href="#4-tcp的4次挥手" class="headerlink" title="4.tcp的4次挥手"></a>4.tcp的4次挥手</h4><p>  client(客户端告诉服务端要关闭链接close)<br>  —-&gt;server(服务端告诉客户端同意关闭链接close)<br>  —-&gt;client(服务端告诉客户端链接已关闭)<br>  server—-&gt;client(服务端将最后的数据传递给客户端)<br>  —-&gt;server(设置超时等待，确保最后达到关闭状态)</p>
+<h4 id="5-tcp长连接和短连接"><a href="#5-tcp长连接和短连接" class="headerlink" title="5.tcp长连接和短连接"></a>5.tcp长连接和短连接</h4><ol>
+<li><p>TCP短连接</p>
+<p>client 向 server 发起连接请求<br>server 接到请求，双方建立连接<br>client 向 server 发送消息<br>server 回应 client<br>一次读写完成，此时双方任何一个都可以发起 close 操作<br>在步骤5中，一般都是 client 先发起 close 操作。当然也不排除有特殊的情况。</p>
+<p>短连接一般只会在 client/server 间传递一次读写操作！</p>
+</li>
+<li><p>TCP长连接</p>
+<p>client 向 server 发起连接<br>server 接到请求，双方建立连接<br>client 向 server 发送消息<br>server 回应 client<br>一次读写完成，连接不关闭<br>后续读写操作…<br>长时间操作之后client发起关闭请求</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/27/webapp/" rel="next" title="webapp">
+                <i class="fa fa-chevron-left"></i> webapp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/08/udp网络编程基础/" rel="prev" title="udp网络编程基础">
+                udp网络编程基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Baron" />
+            
+              <p class="site-author-name" itemprop="name">Baron</p>
+              <p class="site-description motion-element" itemprop="description">Baron个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/KingDragon-Baron" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:ecustfengyun@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/ecustfengyun" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tcp网络编程基础"><span class="nav-number">1.</span> <span class="nav-text">tcp网络编程基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-tcp客户端"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.tcp客户端</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建socket"><span class="nav-number"></span> <span class="nav-text">创建socket</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目的信息"><span class="nav-number"></span> <span class="nav-text">目的信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#链接服务器"><span class="nav-number"></span> <span class="nav-text">链接服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#提示用户输入数据"><span class="nav-number"></span> <span class="nav-text">提示用户输入数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接收对方发送过来的数据，最大接收1024个字节"><span class="nav-number"></span> <span class="nav-text">接收对方发送过来的数据，最大接收1024个字节</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关闭套接字"><span class="nav-number"></span> <span class="nav-text">关闭套接字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-tcp服务器"><span class="nav-number">0.0.1.</span> <span class="nav-text">2.tcp服务器</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建socket-1"><span class="nav-number"></span> <span class="nav-text">创建socket</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本地信息（不写ip默认本机127-0-0-1）"><span class="nav-number"></span> <span class="nav-text">本地信息（不写ip默认本机127.0.0.1）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绑定"><span class="nav-number"></span> <span class="nav-text">绑定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了"><span class="nav-number"></span> <span class="nav-text">使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如果有新的客户端来链接服务器，那么就产生一个新的套接字专门为这个客户端服务"><span class="nav-number"></span> <span class="nav-text">如果有新的客户端来链接服务器，那么就产生一个新的套接字专门为这个客户端服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client-socket用来为这个客户端服务"><span class="nav-number"></span> <span class="nav-text">client_socket用来为这个客户端服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tcp-server-socket就可以省下来专门等待其他新客户端的链接"><span class="nav-number"></span> <span class="nav-text">tcp_server_socket就可以省下来专门等待其他新客户端的链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接收对方发送过来的数据"><span class="nav-number"></span> <span class="nav-text">接收对方发送过来的数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发送一些数据到客户端"><span class="nav-number"></span> <span class="nav-text">发送一些数据到客户端</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关闭为这个客户端服务的套接字，只要关闭了，就意味着为不能再为这个客户端服务了，如果还需要服务，只能再次重新连接"><span class="nav-number"></span> <span class="nav-text">关闭为这个客户端服务的套接字，只要关闭了，就意味着为不能再为这个客户端服务了，如果还需要服务，只能再次重新连接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-tcp的3次握手"><span class="nav-number">0.0.1.</span> <span class="nav-text">3.tcp的3次握手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-tcp的4次挥手"><span class="nav-number">0.0.2.</span> <span class="nav-text">4.tcp的4次挥手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-tcp长连接和短连接"><span class="nav-number">0.0.3.</span> <span class="nav-text">5.tcp长连接和短连接</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Baron</span>
+
+  
+</div>
+
+
+  <div class="powered-by">个人专属</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">博客-Baron &mdash; NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="webapp," />
+  <meta name="keywords" content="python," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="移动web学习总结1. 响应式布局常见屏幕大小1. 大电脑（笔记本 大台式机）：屏幕判断是&amp;gt;1200都是大电脑 大屏幕 2. 小电脑（老的台式机）： 屏幕&amp;gt;992 并且 &amp;lt; 1200         中屏幕 3. 平板电脑（ipad） : 屏幕 &amp;gt; 768 并且 &amp;lt; 992           小屏幕 4. 手机 ： 屏幕 &amp;lt; 768">
-<meta name="keywords" content="webapp">
+<meta name="description" content="线程、进程、协程 1.线程多线程的简单实现#coding=utf-8 import threading from time import sleep,ctime  def sing():     for i in range(3):         print(&amp;quot;正在唱歌...%d&amp;quot;%i)         sleep(1)  def dance():     for i in">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="webapp">
-<meta property="og:url" content="https://github.com/KingDragon-Baron/2018/09/27/webapp/index.html">
+<meta property="og:title" content="线程、进程、协程实现多任务">
+<meta property="og:url" content="https://github.com/KingDragon-Baron/2018/11/08/线程、进程、协程实现多任务/index.html">
 <meta property="og:site_name" content="King Dragon">
-<meta property="og:description" content="移动web学习总结1. 响应式布局常见屏幕大小1. 大电脑（笔记本 大台式机）：屏幕判断是&amp;gt;1200都是大电脑 大屏幕 2. 小电脑（老的台式机）： 屏幕&amp;gt;992 并且 &amp;lt; 1200         中屏幕 3. 平板电脑（ipad） : 屏幕 &amp;gt; 768 并且 &amp;lt; 992           小屏幕 4. 手机 ： 屏幕 &amp;lt; 768">
+<meta property="og:description" content="线程、进程、协程 1.线程多线程的简单实现#coding=utf-8 import threading from time import sleep,ctime  def sing():     for i in range(3):         print(&amp;quot;正在唱歌...%d&amp;quot;%i)         sleep(1)  def dance():     for i in">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-27T05:58:30.935Z">
+<meta property="og:updated_time" content="2018-11-08T15:50:58.402Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webapp">
-<meta name="twitter:description" content="移动web学习总结1. 响应式布局常见屏幕大小1. 大电脑（笔记本 大台式机）：屏幕判断是&amp;gt;1200都是大电脑 大屏幕 2. 小电脑（老的台式机）： 屏幕&amp;gt;992 并且 &amp;lt; 1200         中屏幕 3. 平板电脑（ipad） : 屏幕 &amp;gt; 768 并且 &amp;lt; 992           小屏幕 4. 手机 ： 屏幕 &amp;lt; 768">
+<meta name="twitter:title" content="线程、进程、协程实现多任务">
+<meta name="twitter:description" content="线程、进程、协程 1.线程多线程的简单实现#coding=utf-8 import threading from time import sleep,ctime  def sing():     for i in range(3):         print(&amp;quot;正在唱歌...%d&amp;quot;%i)         sleep(1)  def dance():     for i in">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/KingDragon-Baron/2018/09/27/webapp/"/>
+  <link rel="canonical" href="https://github.com/KingDragon-Baron/2018/11/08/线程、进程、协程实现多任务/"/>
 
 
 
 
 
-  <title>webapp | King Dragon</title>
+  <title>线程、进程、协程实现多任务 | King Dragon</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/KingDragon-Baron/2018/09/27/webapp/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/KingDragon-Baron/2018/11/08/线程、进程、协程实现多任务/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Baron">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">webapp</h1>
+          <h1 class="post-title" itemprop="name headline">线程、进程、协程实现多任务</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-27T13:56:39+08:00">
-                2018-09-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T23:47:41+08:00">
+                2018-11-08
               </time>
             
 
@@ -342,141 +342,250 @@
       
 
       
-        <h1 id="移动web学习总结"><a href="#移动web学习总结" class="headerlink" title="移动web学习总结"></a>移动web学习总结</h1><h2 id="1-响应式布局常见屏幕大小"><a href="#1-响应式布局常见屏幕大小" class="headerlink" title="1. 响应式布局常见屏幕大小"></a>1. 响应式布局常见屏幕大小</h2><pre><code>1. 大电脑（笔记本 大台式机）：屏幕判断是&gt;1200都是大电脑 大屏幕
-2. 小电脑（老的台式机）： 屏幕&gt;992 并且 &lt; 1200         中屏幕
-3. 平板电脑（ipad） : 屏幕 &gt; 768 并且 &lt; 992           小屏幕
-4. 手机 ： 屏幕 &lt; 768                                超小屏幕
-</code></pre><h2 id="2-媒体查询"><a href="#2-媒体查询" class="headerlink" title="2. 媒体查询"></a>2. 媒体查询</h2><pre><code>语法: @media(条件){属性}
-例子:    @media(min-width: 1200px){
-            div,span {
-                width:25%;
-              }
-          }
-</code></pre><h2 id="3-响应式开发框架"><a href="#3-响应式开发框架" class="headerlink" title="3. 响应式开发框架"></a>3. 响应式开发框架</h2><ol>
-<li><a href="http://www.bootcss.com/" target="_blank" rel="noopener">bootstrap 框架</a></li>
-<li><a href="http://amazeui.org/" target="_blank" rel="noopener">AmazeUI</a></li>
-<li><a href="http://dev.dcloud.net.cn/mui/" target="_blank" rel="noopener">MUI</a></li>
-<li><a href="https://www.layui.com/" target="_blank" rel="noopener">Layui</a></li>
-</ol>
-<h2 id="4-全局css初始化样式"><a href="#4-全局css初始化样式" class="headerlink" title="4. 全局css初始化样式"></a>4. 全局css初始化样式</h2><pre><code>/*reset css*/
-*,::before,::after{
-    margin:0;
-    padding:0;
-    /*清除移动端默认的点击高亮效果*/
-    -webkit-tap-highlight-color:transparent;
-    /*设置以边框开始计算宽度*/
-    -webkit-box-sizing:border-box;
-    box-sizing:border-box;
-}
+        <h2 id="线程、进程、协程"><a href="#线程、进程、协程" class="headerlink" title="线程、进程、协程"></a>线程、进程、协程</h2><hr>
+<h4 id="1-线程"><a href="#1-线程" class="headerlink" title="1.线程"></a>1.线程</h4><h6 id="多线程的简单实现"><a href="#多线程的简单实现" class="headerlink" title="多线程的简单实现"></a>多线程的简单实现</h6><pre><code>#coding=utf-8
+import threading
+from time import sleep,ctime
 
-body{
-    font-size:14px;
-    font-family:&quot;Microsoft YaHei&quot;,sans-serif;/*设备默认字体*/
-    color:#333;
-}
+def sing():
+    for i in range(3):
+        print(&quot;正在唱歌...%d&quot;%i)
+        sleep(1)
 
-a{
-    color:#333;
-    text-decoration:none;
-}
+def dance():
+    for i in range(3):
+        print(&quot;正在跳舞...%d&quot;%i)
+        sleep(1)
 
-a:hover{
-    text-decoration:none;
-}
+if __name__ == &apos;__main__&apos;:
+    print(&apos;---开始---:%s&apos;%ctime())
 
-ul,ol{
-    list-style:none;
-}
+    t1 = threading.Thread(target=sing)
+    t2 = threading.Thread(target=dance)
 
-input{
-    border:none;
-    outline:none;
-    /*清除移动端默认的表单样式*/
-    -webkit-appearance:none;
-}
+    t1.start()
+    t2.start()
 
-.clearfix::before,.clearfix::after{
-    content:&quot;&quot;;
-    height:0;
-    line-height:0;
-    display:block;
-    visibility:hidden;
-    clear:both;
-}
-</code></pre><h2 id="5-如何去生成自己的字体图标"><a href="#5-如何去生成自己的字体图标" class="headerlink" title="5. 如何去生成自己的字体图标"></a>5. 如何去生成自己的字体图标</h2><ol>
-<li>获取到字体图标文件(如:阿里图标库官网 <a href="http://www.iconfont.cn/" target="_blank" rel="noopener">http://www.iconfont.cn/</a>)</li>
-<li>创建了一个iconfont.css文件,创建一个属于你的字体<pre><code>@font-face {
-    font-family: &quot;iconfont&quot;;
-    /*还要指定src字体文件的路径*/ 
-    /*如果要兼容不同浏览器就要引入多个字体文件(eot svg ttf woff)
-    同时要format声明这个字体文件的类型*/
-    src:url(&apos;iconfont.ttf?t=1535163749373&apos;) format(&apos;truetype&apos;);
-  }
-</code></pre></li>
-<li>使用字体<pre><code>/*公共类 来使用图标字体*/
-  .iconfont {
-    font-family:&quot;icon&quot; !important;
-    font-size:16px;
-    font-style:normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  } 
-</code></pre></li>
-<li>使用图标的编码 <pre><code>.icon-staroff:before { content: &quot;\e618&quot;; }
-</code></pre></li>
-</ol>
-<h2 id="6-手机调试"><a href="#6-手机调试" class="headerlink" title="6. 手机调试"></a>6. 手机调试</h2><pre><code>1. 原理： 让手机和电脑在同一个网络 使用局域网的方式访问
-2. 如何让手机和电脑在一个网络
-    1. 手机和电脑连接同一个wifi
-    2. 用电脑开wifi给手机连接
-    3. 用手机开热点 电脑连接
+    print(&apos;---结束---:%s&apos;%ctime())
+</code></pre><h6 id="多线程实现多任务版udp聊天器"><a href="#多线程实现多任务版udp聊天器" class="headerlink" title="多线程实现多任务版udp聊天器"></a>多线程实现多任务版udp聊天器</h6><pre><code>import socket
+import threading
 
-3. 使用手机开热点电脑连接
-  1. 手机打开热点
-  2. 电脑连接wifi 连接手机放出来wifi
-  3. 查看wifi的ip地址 （就是你手机网络的地址
-  4. 关闭防火墙
-4. 使用电脑开启网页服务sublimer vscode等都可以  webstrome不可以
-  1. 开启网页服务器后 把localost换成当前wifi的ip地址 
-  2. 刷新页面 如果能够打开表示ip正常
-5. 通过二维码插件扫码 微信扫不开 用浏览器扫码 或者 直接把整个网址发送到手机上就可以打
-</code></pre><h2 id="7-物理像素-逻辑像素-真实像素"><a href="#7-物理像素-逻辑像素-真实像素" class="headerlink" title="7. 物理像素/逻辑像素/真实像素"></a>7. 物理像素/逻辑像素/真实像素</h2><pre><code>1. 物理分辨率像素： 设备的屏幕上的最小单元 相当于屏幕里面每一个小格子 1个格子就是1px       硬件决定的  屏幕分辨率是多大就是多大
-2. 逻辑像素(CSS像素): 逻辑单位 相当于视口里面每一个小格子  1个格子也是1px       跟随视口的变化而变化
-3. 设备真实像素： 模拟器里面375*667  320*568 设备屏幕真实的大小        也是固定的屏幕多大就是多大
-4. 逻辑像素和真实像素的关系： 因为移动开发一般会把视口的宽度设置为设备的真实宽度就表示       逻辑像素和真实像素是一样
-5. 逻辑像素和分辨率像素的关系： 
-    1. 分辨率像素在手机上通常和真实像素 是不一样的
-        iphone5 320*568   640 * 1136
-        iphone678 375*667  750 * 1334
-        通常手机屏幕分辨率比真实的像素大2倍
-        分辨率的像素也比逻辑像素大2倍
-    2. 2个分辨率的px 宽度  = 1CSSpx  宽度
-    3. 除了2倍 还有iphonex   375* 812   1125*2436 
-      屏幕的分辨率 比真实像素大3倍
-      分辨率像素 也比逻辑像素3倍
-      在iphonex 3px 宽度 = 1 CSSpx 宽度
-</code></pre><p>[移动端其他常识] (<a href="http://www.woshipm.com/pmd/176328.html" target="_blank" rel="noopener">http://www.woshipm.com/pmd/176328.html</a>)</p>
-<ol>
-<li>dpr: 设备像素比 分辨率和真实像素的比率</li>
-<li>ppi: 一英寸里面的px数量 </li>
-<li>dpi: 1英寸的点数量</li>
-<li>px pt 单位 英寸单位 em rem单位等</li>
-</ol>
-<h2 id="8-常见的网页的布局方式"><a href="#8-常见的网页的布局方式" class="headerlink" title="8. 常见的网页的布局方式"></a>8. 常见的网页的布局方式</h2><pre><code>1. 固定宽高布局
-2. 百分比布局
-3. 伸缩布局flex布局
-4. 响应式布局
-5. 把伸缩+百分比结合在一起  伸缩百分比布局
-6. rem布局
-</code></pre><h2 id="9-rem布局详解"><a href="#9-rem布局详解" class="headerlink" title="9. rem布局详解"></a>9. rem布局详解</h2><h3 id="rem是什么"><a href="#rem是什么" class="headerlink" title="rem是什么"></a>rem是什么</h3><ol>
-<li>rem是什么：rem root element 根元素(html元素) 是一个单位 这个单位的大小参照根元素的字体大小</li>
-</ol>
-<h3 id="rem的好处"><a href="#rem的好处" class="headerlink" title="rem的好处"></a>rem的好处</h3><ol>
-<li>rem大小是固定参照根元素的font-size  使用的时候rem值相对统一</li>
-<li>只需要修改根元素的font-size 可以实现全局修改 可以实现修改根元素字体大小实现全屏的缩放</li>
-<li>实现自适应缩放布局</li>
-</ol>
 
+def send_msg(udp_socket):
+    &quot;&quot;&quot;获取键盘数据，并将其发送给对方&quot;&quot;&quot;
+    while True:
+        # 1. 从键盘输入数据
+        msg = input(&quot;\n请输入要发送的数据:&quot;)
+        # 2. 输入对方的ip地址
+        dest_ip = input(&quot;\n请输入对方的ip地址:&quot;)
+        # 3. 输入对方的port
+        dest_port = int(input(&quot;\n请输入对方的port:&quot;))
+        # 4. 发送数据
+        udp_socket.sendto(msg.encode(&quot;utf-8&quot;), (dest_ip, dest_port))
+
+
+def recv_msg(udp_socket):
+    &quot;&quot;&quot;接收数据并显示&quot;&quot;&quot;
+    while True:
+        # 1. 接收数据
+        recv_msg = udp_socket.recvfrom(1024)
+        # 2. 解码
+        recv_ip = recv_msg[1]
+        recv_msg = recv_msg[0].decode(&quot;utf-8&quot;)
+        # 3. 显示接收到的数据
+        print(&quot;&gt;&gt;&gt;%s:%s&quot; % (str(recv_ip), recv_msg))
+
+
+def main():
+    # 1. 创建套接字
+    udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    # 2. 绑定本地信息
+    udp_socket.bind((&quot;&quot;, 7890))
+
+    # 3. 创建一个子线程用来接收数据
+    t = threading.Thread(target=recv_msg, args=(udp_socket,))
+    t.start()
+    # 4. 让主线程用来检测键盘数据并且发送
+    send_msg(udp_socket)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre><h4 id="2-进程"><a href="#2-进程" class="headerlink" title="2.进程"></a>2.进程</h4><h6 id="多进程的简单实现"><a href="#多进程的简单实现" class="headerlink" title="多进程的简单实现"></a>多进程的简单实现</h6><pre><code># -*- coding:utf-8 -*-
+
+# 修改import中的Queue为Manager
+from multiprocessing import Manager,Pool
+import os,time,random
+
+def reader(q):
+    print(&quot;reader启动(%s),父进程为(%s)&quot; % (os.getpid(), os.getppid()))
+    for i in range(q.qsize()):
+        print(&quot;reader从Queue获取到消息：%s&quot; % q.get(True))
+
+def writer(q):
+    print(&quot;writer启动(%s),父进程为(%s)&quot; % (os.getpid(), os.getppid()))
+    for i in &quot;itcast&quot;:
+        q.put(i)
+
+if __name__==&quot;__main__&quot;:
+    print(&quot;(%s) start&quot; % os.getpid())
+    q = Manager().Queue()  # 使用Manager中的Queue
+    po = Pool()
+    po.apply_async(writer, (q,))
+
+    time.sleep(1)  # 先让上面的任务向Queue存入数据，然后再让下面的任务开始从中取数据
+
+    po.apply_async(reader, (q,))
+    po.close()  # 关闭进程池，关闭后po不再接收新的请求
+    po.join()  # 等待po中所有子进程执行完成，必须放在close语句之后
+    print(&quot;(%s) End&quot; % os.getpid())
+</code></pre><h6 id="文件夹copy器（多进程版）"><a href="#文件夹copy器（多进程版）" class="headerlink" title="文件夹copy器（多进程版）"></a>文件夹copy器（多进程版）</h6><pre><code>import multiprocessing
+import os
+import time
+import random
+
+
+def copy_file(queue, file_name,source_folder_name,  dest_folder_name):
+    &quot;&quot;&quot;copy文件到指定的路径&quot;&quot;&quot;
+    f_read = open(source_folder_name + &quot;/&quot; + file_name, &quot;rb&quot;)
+    f_write = open(dest_folder_name + &quot;/&quot; + file_name, &quot;wb&quot;)
+    while True:
+        time.sleep(random.random())
+        content = f_read.read(1024)
+        if content:
+            f_write.write(content)
+        else:
+            break
+    f_read.close()
+    f_write.close()
+
+    # 发送已经拷贝完毕的文件名字
+    queue.put(file_name)
+
+
+def main():
+    # 获取要复制的文件夹
+    source_folder_name = input(&quot;请输入要复制文件夹名字:&quot;)
+
+    # 整理目标文件夹
+    dest_folder_name = source_folder_name + &quot;[副本]&quot;
+
+    # 创建目标文件夹
+    try:
+        os.mkdir(dest_folder_name)
+    except:
+        pass  # 如果文件夹已经存在，那么创建会失败
+
+    # 获取这个文件夹中所有的普通文件名
+    file_names = os.listdir(source_folder_name)
+
+    # 创建Queue
+    queue = multiprocessing.Manager().Queue()
+
+    # 创建进程池
+    pool = multiprocessing.Pool(3)
+
+    for file_name in file_names:
+        # 向进程池中添加任务
+        pool.apply_async(copy_file, args=(queue, file_name, source_folder_name, dest_folder_name))
+
+    # 主进程显示进度
+    pool.close()
+
+    all_file_num = len(file_names)
+    while True:
+        file_name = queue.get()
+        if file_name in file_names:
+            file_names.remove(file_name)
+
+        copy_rate = (all_file_num-len(file_names))*100/all_file_num
+        print(&quot;\r%.2f...(%s)&quot; % (copy_rate, file_name) + &quot; &quot;*50, end=&quot;&quot;)
+        if copy_rate &gt;= 100:
+            break
+    print()
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre><h4 id="3-协程"><a href="#3-协程" class="headerlink" title="3.协程"></a>3.协程</h4><h6 id="多协程的简单实现"><a href="#多协程的简单实现" class="headerlink" title="多协程的简单实现"></a>多协程的简单实现</h6><pre><code>import time
+</code></pre><p>(1).yield关键字<br>    def work1():<br>        while True:<br>            print(“—-work1—“)<br>            yield<br>            time.sleep(0.5)</p>
+<pre><code>def work2():
+    while True:
+        print(&quot;----work2---&quot;)
+        yield
+        time.sleep(0.5)
+
+def main():
+    w1 = work1()
+    w2 = work2()
+    while True:
+        next(w1)
+        next(w2)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre><p>(2).greenlet实现协程</p>
+<pre><code>#coding=utf-8
+
+from greenlet import greenlet
+import time
+
+def test1():
+    while True:
+        print &quot;---A--&quot;
+        gr2.switch()
+        time.sleep(0.5)
+
+def test2():
+    while True:
+        print &quot;---B--&quot;
+        gr1.switch()
+        time.sleep(0.5)
+
+gr1 = greenlet(test1)
+gr2 = greenlet(test2)
+
+#切换到gr1中运行
+gr1.switch()
+</code></pre><p>(3).gevent实现协程</p>
+<pre><code>from gevent import monkey
+import gevent
+import random
+import time
+
+# 有耗时操作时需要
+monkey.patch_all()  # 将程序中用到的耗时操作的代码，换为gevent中自己实现的模块
+
+def coroutine_work(coroutine_name):
+    for i in range(10):
+        print(coroutine_name, i)
+        time.sleep(random.random())
+
+gevent.joinall([
+        gevent.spawn(coroutine_work, &quot;work1&quot;),
+        gevent.spawn(coroutine_work, &quot;work2&quot;)
+])
+</code></pre><h6 id="并发下载器"><a href="#并发下载器" class="headerlink" title="并发下载器"></a>并发下载器</h6><pre><code>from gevent import monkey
+import gevent
+import urllib.request
+
+#有IO才做时需要这一句
+monkey.patch_all()
+
+def my_downLoad(file_name, url):
+    print(&apos;GET: %s&apos; % url)
+    resp = urllib.request.urlopen(url)
+    data = resp.read()
+
+    with open(file_name, &quot;wb&quot;) as f:
+        f.write(data)
+
+    print(&apos;%d bytes received from %s.&apos; % (len(data), url))
+
+gevent.joinall([
+        gevent.spawn(my_downLoad, &quot;1.mp4&quot;, &apos;资源地址&apos;),
+        gevent.spawn(my_downLoad, &quot;2.mp4&quot;, &apos;资源地址&apos;),
+])
+</code></pre>
       
     </div>
     
@@ -493,7 +602,7 @@ input{
       
         <div class="post-tags">
           
-            <a href="/tags/webapp/" rel="tag"># webapp</a>
+            <a href="/tags/python/" rel="tag"># python</a>
           
         </div>
       
@@ -506,8 +615,8 @@ input{
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/24/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/11/08/udp网络编程基础/" rel="next" title="udp网络编程基础">
+                <i class="fa fa-chevron-left"></i> udp网络编程基础
               </a>
             
           </div>
@@ -516,8 +625,8 @@ input{
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/08/tcp网络编程基础/" rel="prev" title="tcp网络编程基础">
-                tcp网络编程基础 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/08/线程、进程、协程实现web静态服务器/" rel="prev" title="线程、进程、协程实现web静态服务器">
+                线程、进程、协程实现web静态服务器 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -676,7 +785,7 @@ input{
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#移动web学习总结"><span class="nav-number">1.</span> <span class="nav-text">移动web学习总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-响应式布局常见屏幕大小"><span class="nav-number">1.1.</span> <span class="nav-text">1. 响应式布局常见屏幕大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-媒体查询"><span class="nav-number">1.2.</span> <span class="nav-text">2. 媒体查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-响应式开发框架"><span class="nav-number">1.3.</span> <span class="nav-text">3. 响应式开发框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-全局css初始化样式"><span class="nav-number">1.4.</span> <span class="nav-text">4. 全局css初始化样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-如何去生成自己的字体图标"><span class="nav-number">1.5.</span> <span class="nav-text">5. 如何去生成自己的字体图标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-手机调试"><span class="nav-number">1.6.</span> <span class="nav-text">6. 手机调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-物理像素-逻辑像素-真实像素"><span class="nav-number">1.7.</span> <span class="nav-text">7. 物理像素/逻辑像素/真实像素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-常见的网页的布局方式"><span class="nav-number">1.8.</span> <span class="nav-text">8. 常见的网页的布局方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-rem布局详解"><span class="nav-number">1.9.</span> <span class="nav-text">9. rem布局详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rem是什么"><span class="nav-number">1.9.1.</span> <span class="nav-text">rem是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rem的好处"><span class="nav-number">1.9.2.</span> <span class="nav-text">rem的好处</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程、进程、协程"><span class="nav-number">1.</span> <span class="nav-text">线程、进程、协程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-线程"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.线程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#多线程的简单实现"><span class="nav-number">1.0.1.0.1.</span> <span class="nav-text">多线程的简单实现</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多线程实现多任务版udp聊天器"><span class="nav-number">1.0.1.0.2.</span> <span class="nav-text">多线程实现多任务版udp聊天器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-进程"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.进程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#多进程的简单实现"><span class="nav-number">1.0.2.0.1.</span> <span class="nav-text">多进程的简单实现</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#文件夹copy器（多进程版）"><span class="nav-number">1.0.2.0.2.</span> <span class="nav-text">文件夹copy器（多进程版）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-协程"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.协程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#多协程的简单实现"><span class="nav-number">1.0.3.0.1.</span> <span class="nav-text">多协程的简单实现</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#并发下载器"><span class="nav-number">1.0.3.0.2.</span> <span class="nav-text">并发下载器</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

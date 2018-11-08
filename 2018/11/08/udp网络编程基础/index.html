@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="webapp," />
+  <meta name="keywords" content="python," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="移动web学习总结1. 响应式布局常见屏幕大小1. 大电脑（笔记本 大台式机）：屏幕判断是&amp;gt;1200都是大电脑 大屏幕 2. 小电脑（老的台式机）： 屏幕&amp;gt;992 并且 &amp;lt; 1200         中屏幕 3. 平板电脑（ipad） : 屏幕 &amp;gt; 768 并且 &amp;lt; 992           小屏幕 4. 手机 ： 屏幕 &amp;lt; 768">
-<meta name="keywords" content="webapp">
+<meta name="description" content="udp网络程序-发送、接收数据 1. udp网络程序-发送数据创建一个基于udp的网络程序流程很简单，具体步骤如下： 1.创建客户端套接字2.发送/接收数据3.关闭套接字 代码如下：   #coding=utf-8   from socket import * 1. 创建udp套接字  udp_socket = socket(AF_INET, SOCK_DGRAM) 2. 准备接收方的地址‘192">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="webapp">
-<meta property="og:url" content="https://github.com/KingDragon-Baron/2018/09/27/webapp/index.html">
+<meta property="og:title" content="udp网络编程基础">
+<meta property="og:url" content="https://github.com/KingDragon-Baron/2018/11/08/udp网络编程基础/index.html">
 <meta property="og:site_name" content="King Dragon">
-<meta property="og:description" content="移动web学习总结1. 响应式布局常见屏幕大小1. 大电脑（笔记本 大台式机）：屏幕判断是&amp;gt;1200都是大电脑 大屏幕 2. 小电脑（老的台式机）： 屏幕&amp;gt;992 并且 &amp;lt; 1200         中屏幕 3. 平板电脑（ipad） : 屏幕 &amp;gt; 768 并且 &amp;lt; 992           小屏幕 4. 手机 ： 屏幕 &amp;lt; 768">
+<meta property="og:description" content="udp网络程序-发送、接收数据 1. udp网络程序-发送数据创建一个基于udp的网络程序流程很简单，具体步骤如下： 1.创建客户端套接字2.发送/接收数据3.关闭套接字 代码如下：   #coding=utf-8   from socket import * 1. 创建udp套接字  udp_socket = socket(AF_INET, SOCK_DGRAM) 2. 准备接收方的地址‘192">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-27T05:58:30.935Z">
+<meta property="og:updated_time" content="2018-11-08T15:50:12.330Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webapp">
-<meta name="twitter:description" content="移动web学习总结1. 响应式布局常见屏幕大小1. 大电脑（笔记本 大台式机）：屏幕判断是&amp;gt;1200都是大电脑 大屏幕 2. 小电脑（老的台式机）： 屏幕&amp;gt;992 并且 &amp;lt; 1200         中屏幕 3. 平板电脑（ipad） : 屏幕 &amp;gt; 768 并且 &amp;lt; 992           小屏幕 4. 手机 ： 屏幕 &amp;lt; 768">
+<meta name="twitter:title" content="udp网络编程基础">
+<meta name="twitter:description" content="udp网络程序-发送、接收数据 1. udp网络程序-发送数据创建一个基于udp的网络程序流程很简单，具体步骤如下： 1.创建客户端套接字2.发送/接收数据3.关闭套接字 代码如下：   #coding=utf-8   from socket import * 1. 创建udp套接字  udp_socket = socket(AF_INET, SOCK_DGRAM) 2. 准备接收方的地址‘192">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/KingDragon-Baron/2018/09/27/webapp/"/>
+  <link rel="canonical" href="https://github.com/KingDragon-Baron/2018/11/08/udp网络编程基础/"/>
 
 
 
 
 
-  <title>webapp | King Dragon</title>
+  <title>udp网络编程基础 | King Dragon</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/KingDragon-Baron/2018/09/27/webapp/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/KingDragon-Baron/2018/11/08/udp网络编程基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Baron">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">webapp</h1>
+          <h1 class="post-title" itemprop="name headline">udp网络编程基础</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-27T13:56:39+08:00">
-                2018-09-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T23:47:12+08:00">
+                2018-11-08
               </time>
             
 
@@ -342,140 +342,27 @@
       
 
       
-        <h1 id="移动web学习总结"><a href="#移动web学习总结" class="headerlink" title="移动web学习总结"></a>移动web学习总结</h1><h2 id="1-响应式布局常见屏幕大小"><a href="#1-响应式布局常见屏幕大小" class="headerlink" title="1. 响应式布局常见屏幕大小"></a>1. 响应式布局常见屏幕大小</h2><pre><code>1. 大电脑（笔记本 大台式机）：屏幕判断是&gt;1200都是大电脑 大屏幕
-2. 小电脑（老的台式机）： 屏幕&gt;992 并且 &lt; 1200         中屏幕
-3. 平板电脑（ipad） : 屏幕 &gt; 768 并且 &lt; 992           小屏幕
-4. 手机 ： 屏幕 &lt; 768                                超小屏幕
-</code></pre><h2 id="2-媒体查询"><a href="#2-媒体查询" class="headerlink" title="2. 媒体查询"></a>2. 媒体查询</h2><pre><code>语法: @media(条件){属性}
-例子:    @media(min-width: 1200px){
-            div,span {
-                width:25%;
-              }
-          }
-</code></pre><h2 id="3-响应式开发框架"><a href="#3-响应式开发框架" class="headerlink" title="3. 响应式开发框架"></a>3. 响应式开发框架</h2><ol>
-<li><a href="http://www.bootcss.com/" target="_blank" rel="noopener">bootstrap 框架</a></li>
-<li><a href="http://amazeui.org/" target="_blank" rel="noopener">AmazeUI</a></li>
-<li><a href="http://dev.dcloud.net.cn/mui/" target="_blank" rel="noopener">MUI</a></li>
-<li><a href="https://www.layui.com/" target="_blank" rel="noopener">Layui</a></li>
-</ol>
-<h2 id="4-全局css初始化样式"><a href="#4-全局css初始化样式" class="headerlink" title="4. 全局css初始化样式"></a>4. 全局css初始化样式</h2><pre><code>/*reset css*/
-*,::before,::after{
-    margin:0;
-    padding:0;
-    /*清除移动端默认的点击高亮效果*/
-    -webkit-tap-highlight-color:transparent;
-    /*设置以边框开始计算宽度*/
-    -webkit-box-sizing:border-box;
-    box-sizing:border-box;
-}
-
-body{
-    font-size:14px;
-    font-family:&quot;Microsoft YaHei&quot;,sans-serif;/*设备默认字体*/
-    color:#333;
-}
-
-a{
-    color:#333;
-    text-decoration:none;
-}
-
-a:hover{
-    text-decoration:none;
-}
-
-ul,ol{
-    list-style:none;
-}
-
-input{
-    border:none;
-    outline:none;
-    /*清除移动端默认的表单样式*/
-    -webkit-appearance:none;
-}
-
-.clearfix::before,.clearfix::after{
-    content:&quot;&quot;;
-    height:0;
-    line-height:0;
-    display:block;
-    visibility:hidden;
-    clear:both;
-}
-</code></pre><h2 id="5-如何去生成自己的字体图标"><a href="#5-如何去生成自己的字体图标" class="headerlink" title="5. 如何去生成自己的字体图标"></a>5. 如何去生成自己的字体图标</h2><ol>
-<li>获取到字体图标文件(如:阿里图标库官网 <a href="http://www.iconfont.cn/" target="_blank" rel="noopener">http://www.iconfont.cn/</a>)</li>
-<li>创建了一个iconfont.css文件,创建一个属于你的字体<pre><code>@font-face {
-    font-family: &quot;iconfont&quot;;
-    /*还要指定src字体文件的路径*/ 
-    /*如果要兼容不同浏览器就要引入多个字体文件(eot svg ttf woff)
-    同时要format声明这个字体文件的类型*/
-    src:url(&apos;iconfont.ttf?t=1535163749373&apos;) format(&apos;truetype&apos;);
-  }
-</code></pre></li>
-<li>使用字体<pre><code>/*公共类 来使用图标字体*/
-  .iconfont {
-    font-family:&quot;icon&quot; !important;
-    font-size:16px;
-    font-style:normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  } 
-</code></pre></li>
-<li>使用图标的编码 <pre><code>.icon-staroff:before { content: &quot;\e618&quot;; }
-</code></pre></li>
-</ol>
-<h2 id="6-手机调试"><a href="#6-手机调试" class="headerlink" title="6. 手机调试"></a>6. 手机调试</h2><pre><code>1. 原理： 让手机和电脑在同一个网络 使用局域网的方式访问
-2. 如何让手机和电脑在一个网络
-    1. 手机和电脑连接同一个wifi
-    2. 用电脑开wifi给手机连接
-    3. 用手机开热点 电脑连接
-
-3. 使用手机开热点电脑连接
-  1. 手机打开热点
-  2. 电脑连接wifi 连接手机放出来wifi
-  3. 查看wifi的ip地址 （就是你手机网络的地址
-  4. 关闭防火墙
-4. 使用电脑开启网页服务sublimer vscode等都可以  webstrome不可以
-  1. 开启网页服务器后 把localost换成当前wifi的ip地址 
-  2. 刷新页面 如果能够打开表示ip正常
-5. 通过二维码插件扫码 微信扫不开 用浏览器扫码 或者 直接把整个网址发送到手机上就可以打
-</code></pre><h2 id="7-物理像素-逻辑像素-真实像素"><a href="#7-物理像素-逻辑像素-真实像素" class="headerlink" title="7. 物理像素/逻辑像素/真实像素"></a>7. 物理像素/逻辑像素/真实像素</h2><pre><code>1. 物理分辨率像素： 设备的屏幕上的最小单元 相当于屏幕里面每一个小格子 1个格子就是1px       硬件决定的  屏幕分辨率是多大就是多大
-2. 逻辑像素(CSS像素): 逻辑单位 相当于视口里面每一个小格子  1个格子也是1px       跟随视口的变化而变化
-3. 设备真实像素： 模拟器里面375*667  320*568 设备屏幕真实的大小        也是固定的屏幕多大就是多大
-4. 逻辑像素和真实像素的关系： 因为移动开发一般会把视口的宽度设置为设备的真实宽度就表示       逻辑像素和真实像素是一样
-5. 逻辑像素和分辨率像素的关系： 
-    1. 分辨率像素在手机上通常和真实像素 是不一样的
-        iphone5 320*568   640 * 1136
-        iphone678 375*667  750 * 1334
-        通常手机屏幕分辨率比真实的像素大2倍
-        分辨率的像素也比逻辑像素大2倍
-    2. 2个分辨率的px 宽度  = 1CSSpx  宽度
-    3. 除了2倍 还有iphonex   375* 812   1125*2436 
-      屏幕的分辨率 比真实像素大3倍
-      分辨率像素 也比逻辑像素3倍
-      在iphonex 3px 宽度 = 1 CSSpx 宽度
-</code></pre><p>[移动端其他常识] (<a href="http://www.woshipm.com/pmd/176328.html" target="_blank" rel="noopener">http://www.woshipm.com/pmd/176328.html</a>)</p>
-<ol>
-<li>dpr: 设备像素比 分辨率和真实像素的比率</li>
-<li>ppi: 一英寸里面的px数量 </li>
-<li>dpi: 1英寸的点数量</li>
-<li>px pt 单位 英寸单位 em rem单位等</li>
-</ol>
-<h2 id="8-常见的网页的布局方式"><a href="#8-常见的网页的布局方式" class="headerlink" title="8. 常见的网页的布局方式"></a>8. 常见的网页的布局方式</h2><pre><code>1. 固定宽高布局
-2. 百分比布局
-3. 伸缩布局flex布局
-4. 响应式布局
-5. 把伸缩+百分比结合在一起  伸缩百分比布局
-6. rem布局
-</code></pre><h2 id="9-rem布局详解"><a href="#9-rem布局详解" class="headerlink" title="9. rem布局详解"></a>9. rem布局详解</h2><h3 id="rem是什么"><a href="#rem是什么" class="headerlink" title="rem是什么"></a>rem是什么</h3><ol>
-<li>rem是什么：rem root element 根元素(html元素) 是一个单位 这个单位的大小参照根元素的字体大小</li>
-</ol>
-<h3 id="rem的好处"><a href="#rem的好处" class="headerlink" title="rem的好处"></a>rem的好处</h3><ol>
-<li>rem大小是固定参照根元素的font-size  使用的时候rem值相对统一</li>
-<li>只需要修改根元素的font-size 可以实现全局修改 可以实现修改根元素字体大小实现全屏的缩放</li>
-<li>实现自适应缩放布局</li>
-</ol>
+        <h2 id="udp网络程序-发送、接收数据"><a href="#udp网络程序-发送、接收数据" class="headerlink" title="udp网络程序-发送、接收数据"></a>udp网络程序-发送、接收数据</h2><hr>
+<h4 id="1-udp网络程序-发送数据"><a href="#1-udp网络程序-发送数据" class="headerlink" title="1. udp网络程序-发送数据"></a>1. udp网络程序-发送数据</h4><p>创建一个基于udp的网络程序流程很简单，具体步骤如下：</p>
+<p>1.创建客户端套接字<br>2.发送/接收数据<br>3.关闭套接字</p>
+<p>代码如下：</p>
+<p>  #coding=utf-8</p>
+<p>  from socket import *</p>
+<h1 id="1-创建udp套接字"><a href="#1-创建udp套接字" class="headerlink" title="1. 创建udp套接字"></a>1. 创建udp套接字</h1><p>  udp_socket = socket(AF_INET, SOCK_DGRAM)</p>
+<h1 id="2-准备接收方的地址"><a href="#2-准备接收方的地址" class="headerlink" title="2. 准备接收方的地址"></a>2. 准备接收方的地址</h1><h1 id="‘192-168-1-103’表示目的ip地址"><a href="#‘192-168-1-103’表示目的ip地址" class="headerlink" title="‘192.168.1.103’表示目的ip地址"></a>‘192.168.1.103’表示目的ip地址</h1><h1 id="8080表示目的端口"><a href="#8080表示目的端口" class="headerlink" title="8080表示目的端口"></a>8080表示目的端口</h1><p>  dest_addr = (‘192.168.1.103’, 8080)  # 注意 是元组，ip是字符串，端口是数字</p>
+<h1 id="3-从键盘获取数据"><a href="#3-从键盘获取数据" class="headerlink" title="3. 从键盘获取数据"></a>3. 从键盘获取数据</h1><p>  send_data = input(“请输入要发送的数据:”)</p>
+<h1 id="4-发送数据到指定的电脑上的指定程序中"><a href="#4-发送数据到指定的电脑上的指定程序中" class="headerlink" title="4. 发送数据到指定的电脑上的指定程序中"></a>4. 发送数据到指定的电脑上的指定程序中</h1><p>  udp_socket.sendto(send_data.encode(‘utf-8’), dest_addr)</p>
+<h1 id="5-关闭套接字"><a href="#5-关闭套接字" class="headerlink" title="5. 关闭套接字"></a>5. 关闭套接字</h1><p>  udp_socket.close()</p>
+<h4 id="2-udp网络程序-发送、接收数据"><a href="#2-udp网络程序-发送、接收数据" class="headerlink" title="2. udp网络程序-发送、接收数据"></a>2. udp网络程序-发送、接收数据</h4><p>代码如下：</p>
+<p>  #coding=utf-8</p>
+<p>  from socket import *</p>
+<h1 id="1-创建udp套接字-1"><a href="#1-创建udp套接字-1" class="headerlink" title="1. 创建udp套接字"></a>1. 创建udp套接字</h1><p>  udp_socket = socket(AF_INET, SOCK_DGRAM)</p>
+<h1 id="2-准备接收方的地址-1"><a href="#2-准备接收方的地址-1" class="headerlink" title="2. 准备接收方的地址"></a>2. 准备接收方的地址</h1><p>  dest_addr = (‘192.168.236.129’, 8080)</p>
+<h1 id="3-从键盘获取数据-1"><a href="#3-从键盘获取数据-1" class="headerlink" title="3. 从键盘获取数据"></a>3. 从键盘获取数据</h1><p>  send_data = input(“请输入要发送的数据:”)</p>
+<h1 id="4-发送数据到指定的电脑上"><a href="#4-发送数据到指定的电脑上" class="headerlink" title="4. 发送数据到指定的电脑上"></a>4. 发送数据到指定的电脑上</h1><p>  udp_socket.sendto(send_data.encode(‘utf-8’), dest_addr)</p>
+<h1 id="5-等待接收对方发送的数据"><a href="#5-等待接收对方发送的数据" class="headerlink" title="5. 等待接收对方发送的数据"></a>5. 等待接收对方发送的数据</h1><p>  recv_data = udp_socket.recvfrom(1024)  # 1024表示本次接收的最大字节数</p>
+<h1 id="6-显示对方发送的数据"><a href="#6-显示对方发送的数据" class="headerlink" title="6. 显示对方发送的数据"></a>6. 显示对方发送的数据</h1><h1 id="接收到的数据recv-data是一个元组"><a href="#接收到的数据recv-data是一个元组" class="headerlink" title="接收到的数据recv_data是一个元组"></a>接收到的数据recv_data是一个元组</h1><h1 id="第1个元素是对方发送的数据"><a href="#第1个元素是对方发送的数据" class="headerlink" title="第1个元素是对方发送的数据"></a>第1个元素是对方发送的数据</h1><h1 id="第2个元素是对方的ip和端口"><a href="#第2个元素是对方的ip和端口" class="headerlink" title="第2个元素是对方的ip和端口"></a>第2个元素是对方的ip和端口</h1><p>  print(recv_data[0].decode(‘gbk’))<br>  print(recv_data[1])</p>
+<h1 id="可以简写成"><a href="#可以简写成" class="headerlink" title="可以简写成"></a>可以简写成</h1><h1 id="recv-data-client-addr-udp-socket-recvfrom-1024"><a href="#recv-data-client-addr-udp-socket-recvfrom-1024" class="headerlink" title="recv_data, client_addr = udp_socket.recvfrom(1024)"></a>recv_data, client_addr = udp_socket.recvfrom(1024)</h1><h1 id="7-关闭套接字"><a href="#7-关闭套接字" class="headerlink" title="7. 关闭套接字"></a>7. 关闭套接字</h1><p>  udp_socket.close()</p>
 
       
     </div>
@@ -493,7 +380,7 @@ input{
       
         <div class="post-tags">
           
-            <a href="/tags/webapp/" rel="tag"># webapp</a>
+            <a href="/tags/python/" rel="tag"># python</a>
           
         </div>
       
@@ -506,8 +393,8 @@ input{
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/24/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/11/08/tcp网络编程基础/" rel="next" title="tcp网络编程基础">
+                <i class="fa fa-chevron-left"></i> tcp网络编程基础
               </a>
             
           </div>
@@ -516,8 +403,8 @@ input{
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/08/tcp网络编程基础/" rel="prev" title="tcp网络编程基础">
-                tcp网络编程基础 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/08/线程、进程、协程实现多任务/" rel="prev" title="线程、进程、协程实现多任务">
+                线程、进程、协程实现多任务 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -676,7 +563,7 @@ input{
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#移动web学习总结"><span class="nav-number">1.</span> <span class="nav-text">移动web学习总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-响应式布局常见屏幕大小"><span class="nav-number">1.1.</span> <span class="nav-text">1. 响应式布局常见屏幕大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-媒体查询"><span class="nav-number">1.2.</span> <span class="nav-text">2. 媒体查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-响应式开发框架"><span class="nav-number">1.3.</span> <span class="nav-text">3. 响应式开发框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-全局css初始化样式"><span class="nav-number">1.4.</span> <span class="nav-text">4. 全局css初始化样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-如何去生成自己的字体图标"><span class="nav-number">1.5.</span> <span class="nav-text">5. 如何去生成自己的字体图标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-手机调试"><span class="nav-number">1.6.</span> <span class="nav-text">6. 手机调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-物理像素-逻辑像素-真实像素"><span class="nav-number">1.7.</span> <span class="nav-text">7. 物理像素/逻辑像素/真实像素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-常见的网页的布局方式"><span class="nav-number">1.8.</span> <span class="nav-text">8. 常见的网页的布局方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-rem布局详解"><span class="nav-number">1.9.</span> <span class="nav-text">9. rem布局详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rem是什么"><span class="nav-number">1.9.1.</span> <span class="nav-text">rem是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rem的好处"><span class="nav-number">1.9.2.</span> <span class="nav-text">rem的好处</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#udp网络程序-发送、接收数据"><span class="nav-number">1.</span> <span class="nav-text">udp网络程序-发送、接收数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-udp网络程序-发送数据"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. udp网络程序-发送数据</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-创建udp套接字"><span class="nav-number"></span> <span class="nav-text">1. 创建udp套接字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-准备接收方的地址"><span class="nav-number"></span> <span class="nav-text">2. 准备接收方的地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#‘192-168-1-103’表示目的ip地址"><span class="nav-number"></span> <span class="nav-text">‘192.168.1.103’表示目的ip地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8080表示目的端口"><span class="nav-number"></span> <span class="nav-text">8080表示目的端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-从键盘获取数据"><span class="nav-number"></span> <span class="nav-text">3. 从键盘获取数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-发送数据到指定的电脑上的指定程序中"><span class="nav-number"></span> <span class="nav-text">4. 发送数据到指定的电脑上的指定程序中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-关闭套接字"><span class="nav-number"></span> <span class="nav-text">5. 关闭套接字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-udp网络程序-发送、接收数据"><span class="nav-number">0.0.1.</span> <span class="nav-text">2. udp网络程序-发送、接收数据</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-创建udp套接字-1"><span class="nav-number"></span> <span class="nav-text">1. 创建udp套接字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-准备接收方的地址-1"><span class="nav-number"></span> <span class="nav-text">2. 准备接收方的地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-从键盘获取数据-1"><span class="nav-number"></span> <span class="nav-text">3. 从键盘获取数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-发送数据到指定的电脑上"><span class="nav-number"></span> <span class="nav-text">4. 发送数据到指定的电脑上</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-等待接收对方发送的数据"><span class="nav-number"></span> <span class="nav-text">5. 等待接收对方发送的数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-显示对方发送的数据"><span class="nav-number"></span> <span class="nav-text">6. 显示对方发送的数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接收到的数据recv-data是一个元组"><span class="nav-number"></span> <span class="nav-text">接收到的数据recv_data是一个元组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第1个元素是对方发送的数据"><span class="nav-number"></span> <span class="nav-text">第1个元素是对方发送的数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第2个元素是对方的ip和端口"><span class="nav-number"></span> <span class="nav-text">第2个元素是对方的ip和端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#可以简写成"><span class="nav-number"></span> <span class="nav-text">可以简写成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#recv-data-client-addr-udp-socket-recvfrom-1024"><span class="nav-number"></span> <span class="nav-text">recv_data, client_addr = udp_socket.recvfrom(1024)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-关闭套接字"><span class="nav-number"></span> <span class="nav-text">7. 关闭套接字</span></a></div>
             
 
           </div>
