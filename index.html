@@ -252,6 +252,581 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/KingDragon-Baron/2018/11/11/Go基本语法学习总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Baron">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="King Dragon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/11/Go基本语法学习总结/" itemprop="url">'Go基本语法学习总结'</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-11T23:12:03+08:00">
+                2018-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/summary/" itemprop="url" rel="index">
+                    <span itemprop="name">summary</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Go语言基本语法注意点"><a href="#Go语言基本语法注意点" class="headerlink" title="Go语言基本语法注意点"></a>Go语言基本语法注意点</h2><p>####### 匿名变量</p>
+<p>_（下划线）是个特殊的变量名，任何赋予它的值都会被丢弃：</p>
+<pre><code>_, i, _, j := 1, 2, 3, 4
+
+func test() (int, string) {
+    return 250, &quot;sb&quot;
+}
+
+_, str := test()
+</code></pre><h6 id="iota枚举"><a href="#iota枚举" class="headerlink" title="iota枚举"></a>iota枚举</h6><p>常量声明可以使用iota常量生成器初始化，它用于生成一组以相似规则初始化的常量，但是不用每行都写一遍初始化表达式。</p>
+<p>在一个const声明语句中，在第一个声明的常量所在的行，iota将会被置为0，然后在每一个有常量声明的行加一。</p>
+<pre><code>const (
+    x = iota // x == 0
+    y = iota // y == 1
+    z = iota // z == 2
+    w  // 这里隐式地说w = iota，因此w == 3。其实上面y和z可同样不用&quot;= iota&quot;
+)
+
+const v = iota // 每遇到一个const关键字，iota就会重置，此时v == 0
+
+const (
+    h, i, j = iota, iota, iota //h=0,i=0,j=0 iota在同一行值相同
+)
+
+const (
+    a       = iota //a=0
+    b       = &quot;B&quot;
+    c       = iota             //c=2
+    d, e, f = iota, iota, iota //d=3,e=3,f=3
+    g       = iota             //g = 4
+)
+
+const (
+    x1 = iota * 10 // x1 == 0
+    y1 = iota * 10 // y1 == 10
+    z1 = iota * 10 // z1 == 20
+)
+</code></pre><h6 id="fmt包的格式化输出输入"><a href="#fmt包的格式化输出输入" class="headerlink" title="fmt包的格式化输出输入"></a>fmt包的格式化输出输入</h6><pre><code>格式  含义
+%%  一个%字面量
+%b  一个二进制整数值(基数为2)，或者是一个(高级的)用科学计数法表示的指数为2的浮点数
+%c  字符型。可以把输入的数字按照ASCII码相应转换为对应的字符
+%d  一个十进制数值(基数为10)
+%e  以科学记数法e表示的浮点数或者复数值
+%E  以科学记数法E表示的浮点数或者复数值
+%f  以标准记数法表示的浮点数或者复数值
+%g  以%e或者%f表示的浮点数或者复数，任何一个都以最为紧凑的方式输出
+%G  以%E或者%f表示的浮点数或者复数，任何一个都以最为紧凑的方式输出
+%o  一个以八进制表示的数字(基数为8)
+%p  以十六进制(基数为16)表示的一个值的地址，前缀为0x,字母使用小写的a-f表示
+%q  使用Go语法以及必须时使用转义，以双引号括起来的字符串或者字节切片[]byte，或者是以单引号括起来的数字
+%s  字符串。输出字符串中的字符直至字符串中的空字符（字符串以&apos;\0‘结尾，这个&apos;\0&apos;即空字符）
+%t  以true或者false输出的布尔值
+%T  使用Go语法输出的值的类型
+%U  一个用Unicode表示法表示的整型码点，默认值为4个数字字符
+%v  使用默认格式输出的内置或者自定义类型的值，或者是使用其类型的String()方式输出的自定义值，如果该方法存在的话
+%x  以十六进制表示的整型值(基数为十六)，数字a-f使用小写表示
+%X  以十六进制表示的整型值(基数为十六)，数字A-F使用小写表示
+</code></pre><h6 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h6><p>Go语言中不允许隐式转换，所有类型转换必须显式声明，而且转换只能发生在两种相互兼容的类型之间。</p>
+<h6 id="流程控制的特殊点"><a href="#流程控制的特殊点" class="headerlink" title="流程控制的特殊点"></a>流程控制的特殊点</h6><p>if … else if … else：<br>  其中a的作用域在后面的大括号代表的块里。</p>
+<pre><code>if a := 3; a &gt; 3 {
+    fmt.Println(&quot;a&gt;3&quot;)
+} else if a &lt; 3 {
+    fmt.Println(&quot;a&lt;3&quot;)
+} else if a == 3 {
+    fmt.Println(&quot;a==3&quot;)
+} else {
+    fmt.Println(&quot;error&quot;)
+}
+</code></pre><p>switch语句：<br>  Go里面switch默认相当于每个case最后带有break，匹配成功后不会自动向下执行其他case，而是跳出整个switch, 但是可以使用fallthrough强制执行后面的case代码：<br>      switch s3 := 90; { //只有初始化语句，没有条件<br>      case s3 &gt;= 90: //这里写判断语句<br>          fmt.Println(“优秀”)<br>      case s3 &gt;= 80:<br>          fmt.Println(“良好”)<br>      default:<br>          fmt.Println(“一般”)<br>      }</p>
+<p>for（只有一种循环结构）：</p>
+<p>死循环：</p>
+<pre><code>for {
+    //循环体
+}
+</code></pre><p>迭代：<br>  关键字 range 会返回两个值，第一个返回值是元素的数组下标，第二个返回值是元素的值。</p>
+<pre><code>for i, c := range s {
+    fmt.Printf(&quot;%d, %c\n&quot;, i, c)
+}
+</code></pre><h6 id="函数的特殊点"><a href="#函数的特殊点" class="headerlink" title="函数的特殊点"></a>函数的特殊点</h6><p>函数声明：<br>    //求2个数的最小值和最大值<br>    func MinAndMax(num1 int, num2 int) (min int, max int) {<br>      // 第一个（）内是参数，第二个（）是返回值<br>        if num1 &gt; num2 { //如果num1 大于 num2<br>            min = num2<br>            max = num1<br>        } else {<br>            max = num2<br>            min = num1<br>        }</p>
+<pre><code>    return  // return会自动识别返回
+}
+
+func main() {
+    min, max := MinAndMax(33, 22)
+    fmt.Printf(&quot;min = %d, max = %d\n&quot;, min, max) //min = 22, max = 33
+}
+</code></pre><p>延迟调用defer：<br>  关键字 defer ⽤于延迟一个函数或者方法（或者当前所创建的匿名函数）的执行。注意，defer语句只能出现在函数或方法的内部。多个defer语句，按先进后出的方式执行。</p>
+<pre><code>func main() {
+    defer fmt.Println(&quot;this is a defer&quot;) //main结束前调用
+    fmt.Println(&quot;this is a test&quot;)
+    defer fmt.Println(&quot;this is a defer2&quot;)
+    /*
+        运行结果：
+        this is a test
+        this is a defer2
+        this is a defer
+    */
+}
+</code></pre><h6 id="工作区的概念"><a href="#工作区的概念" class="headerlink" title="工作区的概念"></a>工作区的概念</h6><p>  Go代码必须放在工作区中。工作区其实就是一个对应于特定工程的目录，它应包含3个子目录：src目录、pkg目录和bin目录。</p>
+<p>   src目录：用于以代码包的形式组织并保存Go源码文件。（比如：.go .c .h .s等）<br>   pkg目录：用于存放经由go install命令构建安装后的代码包（包含Go库源码文件）的“.a”归档文件。<br>   bin目录：与pkg目录类似，在通过go install命令完成安装后，保存由Go命令源码文件生成的可执行文件。</p>
+<h6 id="包的概念"><a href="#包的概念" class="headerlink" title="包的概念"></a>包的概念</h6><p>  所有 Go 语言的程序都会组织成若干组文件，每组文件被称为一个包。这样每个包的代码都可以作为很小的复用单元，被其他项目引用。<br>  一个包的源代码保存在一个或多个以.go为文件后缀名的源文件中，通常一个包所在目录路径的后缀是包的导入路径。</p>
+<p>  在Go语言中，代码包中的源码文件名可以是任意的。但是，这些任意名称的源码文件都必须以包声明语句作为文件中的第一行，每个包都对应一个独立的名字空间：<br>    package calc</p>
+<p>  包中成员以名称首字母大小写决定访问权限：<br>   public: 首字母大写，可被包外访问<br>   private: 首字母小写，仅包内成员可以访问</p>
+<p>  注意：同一个目录下不能定义不同的package。</p>
+<p>  ====== main包 ======</p>
+<pre><code> 在 Go 语言里，命名为 main 的包具有特殊的含义。 Go 语言的编译程序会试图把这种名字的包编译为二进制可执行文件。所有用 Go 语言编译的可执行程序都必须有一个名叫 main 的包。一个可执行程序有且仅有一个 main 包。
+
+当编译器发现某个包的名字为 main 时，它一定也会发现名为 main()的函数，否则不会创建可执行文件。 main()函数是程序的入口，所以，如果没有这个函数，程序就没有办法开始执行。程序编译时，会使用声明 main 包的代码所在的目录的目录名作为二进制可执行文件的文件名。
+</code></pre><p>  ====== main函数和init函数 ======</p>
+<pre><code>Go里面有两个保留的函数：init函数（能够应用于所有的package）和main函数（只能应用于package main）。这两个函数在定义时不能有任何的参数和返回值。虽然一个package里面可以写任意多个init函数，但这无论是对于可读性还是以后的可维护性来说，我们都强烈建议用户在一个package中每个文件只写一个init函数。
+
+Go程序会自动调用init()和main()，所以你不需要在任何地方调用这两个函数。每个package中的init函数都是可选的，但package main就必须包含一个main函数。
+
+每个包可以包含任意多个 init 函数，这些函数都会在程序执行开始的时候被调用。所有被
+编译器发现的 init 函数都会安排在 main 函数之前执行。 init 函数用在设置包、初始化变量或者其他要在程序运行前优先完成的引导工作。
+
+程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。
+有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。
+
+当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。
+</code></pre><h6 id="指针相关注意点"><a href="#指针相关注意点" class="headerlink" title="指针相关注意点"></a>指针相关注意点</h6><p>  Go语言虽然保留了指针，但与其它编程语言不同的是：<br>   默认值 nil，没有 NULL 常量<br>   操作符 “&amp;” 取变量地址， “*” 通过指针访问目标对象<br>   不支持指针运算，不支持 “-&gt;” 运算符，直接⽤ “.” 访问目标成员</p>
+<h6 id="切片相关注意点"><a href="#切片相关注意点" class="headerlink" title="切片相关注意点"></a>切片相关注意点</h6><p>  切片存在的意义：数组的长度在定义之后无法再次修改；数组是值类型，每次传递都将产生一份副本。显然这种数据结构无法完全满足开发者的真实需求。Go语言提供了数组切片（slice）来弥补数组的不足。</p>
+<p>  切片并不是数组或数组指针，它通过内部指针和相关属性引用数组片段，以实现变长案。</p>
+<p>  slice和数组的区别：声明数组时，方括号内写明了数组的长度或使用…自动计算长度，而声明slice时，方括号内没有任何字符。</p>
+<p>  ====== 切片做函数参数 ======</p>
+<p>  切片本身即是一种引用。</p>
+<pre><code>func test(s []int) { //切片做函数参数
+    s[0] = -1
+    fmt.Println(&quot;test : &quot;)
+    for i, v := range s {
+        fmt.Printf(&quot;s[%d]=%d, &quot;, i, v)
+        //s[0]=-1, s[1]=1, s[2]=2, s[3]=3, s[4]=4, s[5]=5, s[6]=6, s[7]=7, s[8]=8, s[9]=9,
+    }
+    fmt.Println(&quot;\n&quot;)
+}
+
+func main() {
+    slice := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+    test(slice)
+
+    fmt.Println(&quot;main : &quot;)
+    for i, v := range slice {
+        fmt.Printf(&quot;slice[%d]=%d, &quot;, i, v)
+        //slice[0]=-1, slice[1]=1, slice[2]=2, slice[3]=3, slice[4]=4, slice[5]=5, slice[6]=6, slice[7]=7, slice[8]=8, slice[9]=9,
+    }
+    fmt.Println(&quot;\n&quot;)
+}
+</code></pre><h6 id="map相关知识点"><a href="#map相关知识点" class="headerlink" title="map相关知识点"></a>map相关知识点</h6><p>  Go语言中的map(映射、字典)是一种内置的数据结构，它是一个无序的key—value对的集合，比如以身份证号作为唯一键来标识一个人的信息。<br>  map格式为：<br>        map[keyType]valueType</p>
+<p>   ======= map做函数参数 ======</p>
+<p>   在函数间传递映射并不会制造出该映射的一个副本，不是值传递，而是引用传递：</p>
+<pre><code>func DeleteMap(m map[int]string, key int) {
+    delete(m, key) //删除key值为3的map
+
+    for k, v := range m {
+        fmt.Printf(&quot;len(m)=%d, %d ----&gt; %s\n&quot;, len(m), k, v)
+        //len(m)=2, 1 ----&gt; mike
+        //len(m)=2, 3 ----&gt; lily
+    }
+}
+
+func main() {
+    m := map[int]string{1: &quot;mike&quot;, 2: &quot;yoyo&quot;, 3: &quot;lily&quot;}
+
+    DeleteMap(m, 2) //删除key值为3的map
+
+    for k, v := range m {
+        fmt.Printf(&quot;len(m)=%d, %d ----&gt; %s\n&quot;, len(m), k, v)
+        //len(m)=2, 1 ----&gt; mike
+        //len(m)=2, 3 ----&gt; lily
+    }
+}
+</code></pre><h6 id="结构体相关概念"><a href="#结构体相关概念" class="headerlink" title="结构体相关概念"></a>结构体相关概念</h6><p>  ====== 结构体初始化 ======</p>
+<p>  普通变量：<br>    type Student struct {<br>        id   int<br>        name string<br>        sex  byte<br>        age  int<br>        addr string<br>    }<br>    func main() {<br>        //1、顺序初始化，必须每个成员都初始化<br>        var s1 Student = Student{1, “mike”, ‘m’, 18, “sz”}<br>        s2 := Student{2, “yoyo”, ‘f’, 20, “sz”}<br>        //s3 := Student{2, “tom”, ‘m’, 20} //err, too few values in struct initializer</p>
+<pre><code>    //2、指定初始化某个成员，没有初始化的成员为零值
+    s4 := Student{id: 2, name: &quot;lily&quot;}
+}
+
+指针变量：
+type Student struct {
+    id   int
+    name string
+    sex  byte
+    age  int
+    addr string
+}
+
+func main() {
+    var s5 *Student = &amp;Student{3, &quot;xiaoming&quot;, &apos;m&apos;, 16, &quot;bj&quot;}
+    s6 := &amp;Student{4, &quot;rocco&quot;, &apos;m&apos;, 3, &quot;sh&quot;}
+}
+</code></pre><h6 id="Go的面向对象编程"><a href="#Go的面向对象编程" class="headerlink" title="Go的面向对象编程"></a>Go的面向对象编程</h6><p>尽管Go语言中没有封装、继承、多态这些概念，但同样通过别的方式实现这些特性：<br> 封装：通过方法实现<br> 继承：通过匿名字段实现<br> 多态：通过接口实现</p>
+<p>  ====== 匿名字段 ======</p>
+<pre><code>一般情况下，定义结构体的时候是字段名与其类型一一对应，实际上Go支持只提供类型，而不写字段名的方式，也就是匿名字段，也称为嵌入字段。
+
+  //人
+  type Person struct {
+      name string
+      sex  byte
+      age  int
+  }
+
+  //学生
+  type Student struct {
+      Person // 匿名字段，那么默认Student就包含了Person的所有字段
+      id     int
+      addr   string
+  }
+
+  func main() {
+      //顺序初始化
+      s1 := Student{Person{&quot;mike&quot;, &apos;m&apos;, 18}, 1, &quot;sz&quot;}
+      //s1 = {Person:{name:mike sex:109 age:18} id:1 addr:sz}
+      fmt.Printf(&quot;s1 = %+v\n&quot;, s1)
+
+      //s2 := Student{&quot;mike&quot;, &apos;m&apos;, 18, 1, &quot;sz&quot;} //err
+
+      //部分成员初始化1
+      s3 := Student{Person: Person{&quot;lily&quot;, &apos;f&apos;, 19}, id: 2}
+      //s3 = {Person:{name:lily sex:102 age:19} id:2 addr:}
+      fmt.Printf(&quot;s3 = %+v\n&quot;, s3)
+
+      //部分成员初始化2
+      s4 := Student{Person: Person{name: &quot;tom&quot;}, id: 3}
+      //s4 = {Person:{name:tom sex:0 age:0} id:3 addr:}
+      fmt.Printf(&quot;s4 = %+v\n&quot;, s4)
+  }
+
+====== 方法 ======
+
+在面向对象编程中，一个对象其实也就是一个简单的值或者一个变量，在这个对象中会包含一些函数，这种带有接收者的函数，我们称为方法(method)。 本质上，一个方法则是一个和特殊类型关联的函数。
+
+在Go语言中，可以给任意自定义类型（包括内置类型，但不包括指针类型）添加相应的方法。
+
+方法总是绑定对象实例，并隐式将实例作为第一实参 (receiver)，方法的语法如下：
+    func (receiver ReceiverType) funcName(parameters) (results)
+</code></pre><p>     参数 receiver 可任意命名。如方法中未曾使用，可省略参数名。<br>     参数 receiver 类型可以是 T 或 *T。基类型 T 不能是接口或指针。<br>     不支持重载方法，也就是说，不能定义名字相同但是不同参数的方法。</p>
+<p>  ====== 接口 ======</p>
+<p>  在Go语言中，接口(interface)是一个自定义类型，接口类型具体描述了一系列方法的集合。</p>
+<p>  接口类型是一种抽象的类型，它不会暴露出它所代表的对象的内部值的结构和这个对象支持的基础操作的集合，它们只会展示出它们自己的方法。因此接口类型不能将其实例化。</p>
+<p>  ====== 接口定义 ======<br>      type Humaner interface {<br>          SayHi()<br>      }<br> 接口命名习惯以 er 结尾<br> 接口只有方法声明，没有实现，没有数据字段<br> 接口可以匿名嵌入其它接口，或嵌入到结构中</p>
+<pre><code>== 空接口 ==
+空接口(interface{})不包含任何的方法，正因为如此，所有的类型都实现了空接口，因此空接口可以存储任意类型的数值。它有点类似于C语言的void *类型。
+
+当函数可以接受任意的对象实例时，我们会将其声明为interface{}，最典型的例子是标准库fmt中PrintXXX系列的函数，例如：
+      func Printf(fmt string, args ...interface{})
+      func Println(args ...interface{})
+</code></pre><h6 id="类型查询"><a href="#类型查询" class="headerlink" title="类型查询"></a>类型查询</h6><p>  我们知道interface的变量里面可以存储任意类型的数值(该类型实现了interface)。那么我们怎么反向知道这个变量里面实际保存了的是哪个类型的对象呢？目前常用的有两种方法：<br>   comma-ok断言<br>   switch测试</p>
+<p>  ====== comma-ok断言 ======</p>
+<pre><code>Go语言里面有一个语法，可以直接判断是否是该类型的变量： value, ok = element.(T)，这里value就是变量的值，ok是一个bool类型，element是interface变量，T是断言的类型。如果element里面确实存储了T类型的数值，那么ok返回true，否则返回false。
+
+    type Element interface{}
+
+    type Person struct {
+        name string
+        age  int
+    }
+
+    func main() {
+        list := make([]Element, 3)
+        list[0] = 1       // an int
+        list[1] = &quot;Hello&quot; // a string
+        list[2] = Person{&quot;mike&quot;, 18}
+
+        for index, element := range list {
+            if value, ok := element.(int); ok {
+                fmt.Printf(&quot;list[%d] is an int and its value is %d\n&quot;, index, value)
+            } else if value, ok := element.(string); ok {
+                fmt.Printf(&quot;list[%d] is a string and its value is %s\n&quot;, index, value)
+            } else if value, ok := element.(Person); ok {
+                fmt.Printf(&quot;list[%d] is a Person and its value is [%s, %d]\n&quot;, index, value.name, value.age)
+            } else {
+                fmt.Printf(&quot;list[%d] is of a different type\n&quot;, index)
+            }
+        }
+
+        /*  打印结果：
+        list[0] is an int and its value is 1
+        list[1] is a string and its value is Hello
+        list[2] is a Person and its value is [mike, 18]
+        */
+    }
+</code></pre><p>  ====== switch测试 ======</p>
+<pre><code>type Element interface{}
+
+type Person struct {
+    name string
+    age  int
+}
+
+func main() {
+    list := make([]Element, 3)
+    list[0] = 1       //an int
+    list[1] = &quot;Hello&quot; //a string
+    list[2] = Person{&quot;mike&quot;, 18}
+
+    for index, element := range list {
+        switch value := element.(type) {
+        case int:
+            fmt.Printf(&quot;list[%d] is an int and its value is %d\n&quot;, index, value)
+        case string:
+            fmt.Printf(&quot;list[%d] is a string and its value is %s\n&quot;, index, value)
+        case Person:
+            fmt.Printf(&quot;list[%d] is a Person and its value is [%s, %d]\n&quot;, index, value.name, value.age)
+        default:
+            fmt.Println(&quot;list[%d] is of a different type&quot;, index)
+        }
+    }
+}
+</code></pre><h6 id="异常处理相关"><a href="#异常处理相关" class="headerlink" title="异常处理相关"></a>异常处理相关</h6><p>  Go语言引入了一个关于错误处理的标准模式，即error接口，它是Go语言内建的接口类型，该接口的定义如下：<br>      type error interface {<br>          Error() string<br>      }</p>
+<p>  Go语言的标准库代码包errors为用户提供如下方法：<br>      package errors</p>
+<pre><code>type errorString struct { 
+    text string 
+}
+
+func New(text string) error { 
+    return &amp;errorString{text} 
+}
+
+func (e *errorString) Error() string { 
+    return e.text 
+}
+</code></pre><p>  ====== panic ======</p>
+<pre><code>在通常情况下，向程序使用方报告错误状态的方式可以是返回一个额外的error类型值。
+但是，当遇到不可恢复的错误状态的时候，如数组访问越界、空指针引用等，这些运行时错误会引起painc异常。这时，上述错误处理方式显然就不适合了。反过来讲，在一般情况下，我们不应通过调用panic函数来报告普通的错误，而应该只把它作为报告致命错误的一种方式。当某些不应该发生的场景发生时，我们就应该调用panic。
+</code></pre><h6 id="字符串相关方法"><a href="#字符串相关方法" class="headerlink" title="字符串相关方法"></a>字符串相关方法</h6><p>func Contains(s, substr string) bool<br>功能：字符串s中是否包含substr，返回bool值</p>
+<p>func Join(a []string, sep string) string<br>功能：字符串链接，把slice a通过sep链接起来</p>
+<p>func Index(s, sep string) int<br>功能：在字符串s中查找sep所在的位置，返回位置值，找不到返回-1</p>
+<p>func Repeat(s string, count int) string<br>功能：重复s字符串count次，最后返回重复的字符串</p>
+<p>func Replace(s, old, new string, n int) string<br>功能：在s字符串中，把old字符串替换为new字符串，n表示替换的次数，小于0表示全部替换</p>
+<p>func Split(s, sep string) []string<br>功能：把s字符串按照sep分割，返回slice</p>
+<p>func Trim(s string, cutset string) string<br>功能：在s字符串的头部和尾部去除cutset指定的字符串</p>
+<p>func Fields(s string) []string<br>功能：去除s字符串的空格符，并且按照空格分割返回slice</p>
+<p>Append 系列函数将整数等转换为字符串后，添加到现有的字节数组中。</p>
+<p>Format 系列函数把其他类型的转换为字符串。</p>
+<p>Parse 系列函数把字符串转换为其他类型。</p>
+<h6 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h6><pre><code>package main
+
+import (
+    &quot;fmt&quot;
+    &quot;regexp&quot;
+)
+
+func main() {
+    context1 := &quot;3.14 123123 .68 haha 1.0 abc 6.66 123.&quot;
+
+    //MustCompile解析并返回一个正则表达式。如果成功返回，该Regexp就可用于匹配文本。
+    //解析失败时会产生panic
+    // \d 匹配数字[0-9]，d+ 重复&gt;=1次匹配d，越多越好（优先重复匹配d）
+    exp1 := regexp.MustCompile(`\d+\.\d+`)
+
+    //返回保管正则表达式所有不重叠的匹配结果的[]string切片。如果没有匹配到，会返回nil。
+    //result1 := exp1.FindAllString(context1, -1) //[3.14 1.0 6.66]
+    result1 := exp1.FindAllStringSubmatch(context1, -1) //[[3.14] [1.0] [6.66]]
+
+    fmt.Printf(&quot;%v\n&quot;, result1)
+    fmt.Printf(&quot;\n------------------------------------\n\n&quot;)
+
+    context2 := `
+        &lt;title&gt;标题&lt;/title&gt;
+        &lt;div&gt;你过来啊&lt;/div&gt;
+        &lt;div&gt;hello mike&lt;/div&gt;
+        &lt;div&gt;你大爷&lt;/div&gt;
+        &lt;body&gt;呵呵&lt;/body&gt;
+    `
+    //(.*?)被括起来的表达式作为分组
+    //匹配&lt;div&gt;xxx&lt;/div&gt;模式的所有子串
+    exp2 := regexp.MustCompile(`&lt;div&gt;(.*?)&lt;/div&gt;`)
+    result2 := exp2.FindAllStringSubmatch(context2, -1)
+
+    //[[&lt;div&gt;你过来啊&lt;/div&gt; 你过来啊] [&lt;div&gt;hello mike&lt;/div&gt; hello mike] [&lt;div&gt;你大爷&lt;/div&gt; 你大爷]]
+    fmt.Printf(&quot;%v\n&quot;, result2)
+    fmt.Printf(&quot;\n------------------------------------\n\n&quot;)
+
+    context3 := `
+        &lt;title&gt;标题&lt;/title&gt;
+        &lt;div&gt;你过来啊&lt;/div&gt;
+        &lt;div&gt;hello 
+        mike
+        go&lt;/div&gt;
+        &lt;div&gt;你大爷&lt;/div&gt;
+        &lt;body&gt;呵呵&lt;/body&gt;
+    `
+    exp3 := regexp.MustCompile(`&lt;div&gt;(.*?)&lt;/div&gt;`)
+    result3 := exp3.FindAllStringSubmatch(context3, -1)
+
+    //[[&lt;div&gt;你过来啊&lt;/div&gt; 你过来啊] [&lt;div&gt;你大爷&lt;/div&gt; 你大爷]]
+    fmt.Printf(&quot;%v\n&quot;, result3)
+    fmt.Printf(&quot;\n------------------------------------\n\n&quot;)
+
+    context4 := `
+        &lt;title&gt;标题&lt;/title&gt;
+        &lt;div&gt;你过来啊&lt;/div&gt;
+        &lt;div&gt;hello 
+        mike
+        go&lt;/div&gt;
+        &lt;div&gt;你大爷&lt;/div&gt;
+        &lt;body&gt;呵呵&lt;/body&gt;
+    `
+    exp4 := regexp.MustCompile(`&lt;div&gt;(?s:(.*?))&lt;/div&gt;`)
+    result4 := exp4.FindAllStringSubmatch(context4, -1)
+
+    /*
+        [[&lt;div&gt;你过来啊&lt;/div&gt; 你过来啊] [&lt;div&gt;hello
+            mike
+            go&lt;/div&gt; hello
+            mike
+            go] [&lt;div&gt;你大爷&lt;/div&gt; 你大爷]]
+    */
+    fmt.Printf(&quot;%v\n&quot;, result4)
+    fmt.Printf(&quot;\n------------------------------------\n\n&quot;)
+
+    for _, text := range result4 {
+        fmt.Println(text[0]) //带有div
+        fmt.Println(text[1]) //不带带有div
+        fmt.Println(&quot;================\n&quot;)
+    }
+}
+</code></pre><h6 id="json处理"><a href="#json处理" class="headerlink" title="json处理"></a>json处理</h6><p>  使用json.Marshal()函数可以对一组数据进行JSON格式的编码。<br>  使用json.Unmarshal()函数将JSON格式的文本解码为Go里面预期的数据结构。</p>
+<h6 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h6><p>新建文件可以通过如下两个方法：<br>    func Create(name string) (file *File, err Error)<br>    根据提供的文件名创建新的文件，返回一个文件对象，默认权限是0666的文件，返回的文件对象是可读写的。</p>
+<pre><code>func NewFile(fd uintptr, name string) *File
+根据文件描述符创建相应的文件，返回一个文件对象
+</code></pre><p>通过如下两个方法来打开文件：<br>    func Open(name string) (file *File, err Error)<br>    该方法打开一个名称为name的文件，但是是只读方式，内部实现其实调用了OpenFile。</p>
+<pre><code>func OpenFile(name string, flag int, perm uint32) (file *File, err Error)
+打开名称为name的文件，flag是打开的方式，只读、读写等，perm是权限
+</code></pre><p>写文件：<br>    func (file *File) Write(b []byte) (n int, err Error)<br>    写入byte类型的信息到文件</p>
+<pre><code>func (file *File) WriteAt(b []byte, off int64) (n int, err Error)
+在指定位置开始写入byte类型的信息
+
+func (file *File) WriteString(s string) (ret int, err Error)
+写入string信息到文件
+</code></pre><p> 读文件：<br>    func (file *File) Read(b []byte) (n int, err Error)<br>    读取数据到b中</p>
+<pre><code>func (file *File) ReadAt(b []byte, off int64) (n int, err Error)
+从off开始读取数据到b中
+</code></pre><p>删除文件<br>    func Remove(name string) Error<br>    调用该函数就可以删除文件名为name的文件</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/KingDragon-Baron/2018/11/08/线程、进程、协程实现web静态服务器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1402,24 +1977,59 @@ gevent.joinall([
 <h4 id="1-udp网络程序-发送数据"><a href="#1-udp网络程序-发送数据" class="headerlink" title="1. udp网络程序-发送数据"></a>1. udp网络程序-发送数据</h4><p>创建一个基于udp的网络程序流程很简单，具体步骤如下：</p>
 <p>1.创建客户端套接字<br>2.发送/接收数据<br>3.关闭套接字</p>
 <p>代码如下：</p>
-<p>  #coding=utf-8</p>
-<p>  from socket import *</p>
-<h1 id="1-创建udp套接字"><a href="#1-创建udp套接字" class="headerlink" title="1. 创建udp套接字"></a>1. 创建udp套接字</h1><p>  udp_socket = socket(AF_INET, SOCK_DGRAM)</p>
-<h1 id="2-准备接收方的地址"><a href="#2-准备接收方的地址" class="headerlink" title="2. 准备接收方的地址"></a>2. 准备接收方的地址</h1><h1 id="‘192-168-1-103’表示目的ip地址"><a href="#‘192-168-1-103’表示目的ip地址" class="headerlink" title="‘192.168.1.103’表示目的ip地址"></a>‘192.168.1.103’表示目的ip地址</h1><h1 id="8080表示目的端口"><a href="#8080表示目的端口" class="headerlink" title="8080表示目的端口"></a>8080表示目的端口</h1><p>  dest_addr = (‘192.168.1.103’, 8080)  # 注意 是元组，ip是字符串，端口是数字</p>
-<h1 id="3-从键盘获取数据"><a href="#3-从键盘获取数据" class="headerlink" title="3. 从键盘获取数据"></a>3. 从键盘获取数据</h1><p>  send_data = input(“请输入要发送的数据:”)</p>
-<h1 id="4-发送数据到指定的电脑上的指定程序中"><a href="#4-发送数据到指定的电脑上的指定程序中" class="headerlink" title="4. 发送数据到指定的电脑上的指定程序中"></a>4. 发送数据到指定的电脑上的指定程序中</h1><p>  udp_socket.sendto(send_data.encode(‘utf-8’), dest_addr)</p>
-<h1 id="5-关闭套接字"><a href="#5-关闭套接字" class="headerlink" title="5. 关闭套接字"></a>5. 关闭套接字</h1><p>  udp_socket.close()</p>
-<h4 id="2-udp网络程序-发送、接收数据"><a href="#2-udp网络程序-发送、接收数据" class="headerlink" title="2. udp网络程序-发送、接收数据"></a>2. udp网络程序-发送、接收数据</h4><p>代码如下：</p>
-<p>  #coding=utf-8</p>
-<p>  from socket import *</p>
-<h1 id="1-创建udp套接字-1"><a href="#1-创建udp套接字-1" class="headerlink" title="1. 创建udp套接字"></a>1. 创建udp套接字</h1><p>  udp_socket = socket(AF_INET, SOCK_DGRAM)</p>
-<h1 id="2-准备接收方的地址-1"><a href="#2-准备接收方的地址-1" class="headerlink" title="2. 准备接收方的地址"></a>2. 准备接收方的地址</h1><p>  dest_addr = (‘192.168.236.129’, 8080)</p>
-<h1 id="3-从键盘获取数据-1"><a href="#3-从键盘获取数据-1" class="headerlink" title="3. 从键盘获取数据"></a>3. 从键盘获取数据</h1><p>  send_data = input(“请输入要发送的数据:”)</p>
-<h1 id="4-发送数据到指定的电脑上"><a href="#4-发送数据到指定的电脑上" class="headerlink" title="4. 发送数据到指定的电脑上"></a>4. 发送数据到指定的电脑上</h1><p>  udp_socket.sendto(send_data.encode(‘utf-8’), dest_addr)</p>
-<h1 id="5-等待接收对方发送的数据"><a href="#5-等待接收对方发送的数据" class="headerlink" title="5. 等待接收对方发送的数据"></a>5. 等待接收对方发送的数据</h1><p>  recv_data = udp_socket.recvfrom(1024)  # 1024表示本次接收的最大字节数</p>
-<h1 id="6-显示对方发送的数据"><a href="#6-显示对方发送的数据" class="headerlink" title="6. 显示对方发送的数据"></a>6. 显示对方发送的数据</h1><h1 id="接收到的数据recv-data是一个元组"><a href="#接收到的数据recv-data是一个元组" class="headerlink" title="接收到的数据recv_data是一个元组"></a>接收到的数据recv_data是一个元组</h1><h1 id="第1个元素是对方发送的数据"><a href="#第1个元素是对方发送的数据" class="headerlink" title="第1个元素是对方发送的数据"></a>第1个元素是对方发送的数据</h1><h1 id="第2个元素是对方的ip和端口"><a href="#第2个元素是对方的ip和端口" class="headerlink" title="第2个元素是对方的ip和端口"></a>第2个元素是对方的ip和端口</h1><p>  print(recv_data[0].decode(‘gbk’))<br>  print(recv_data[1])</p>
-<h1 id="可以简写成"><a href="#可以简写成" class="headerlink" title="可以简写成"></a>可以简写成</h1><h1 id="recv-data-client-addr-udp-socket-recvfrom-1024"><a href="#recv-data-client-addr-udp-socket-recvfrom-1024" class="headerlink" title="recv_data, client_addr = udp_socket.recvfrom(1024)"></a>recv_data, client_addr = udp_socket.recvfrom(1024)</h1><h1 id="7-关闭套接字"><a href="#7-关闭套接字" class="headerlink" title="7. 关闭套接字"></a>7. 关闭套接字</h1><p>  udp_socket.close()</p>
+<pre><code>#coding=utf-8
 
+from socket import *
+
+# 1. 创建udp套接字
+udp_socket = socket(AF_INET, SOCK_DGRAM)
+
+# 2. 准备接收方的地址
+# &apos;192.168.1.103&apos;表示目的ip地址
+# 8080表示目的端口
+dest_addr = (&apos;192.168.1.103&apos;, 8080)  # 注意 是元组，ip是字符串，端口是数字
+
+# 3. 从键盘获取数据
+send_data = input(&quot;请输入要发送的数据:&quot;)
+
+# 4. 发送数据到指定的电脑上的指定程序中
+udp_socket.sendto(send_data.encode(&apos;utf-8&apos;), dest_addr)
+
+# 5. 关闭套接字
+udp_socket.close()
+</code></pre><h4 id="2-udp网络程序-发送、接收数据"><a href="#2-udp网络程序-发送、接收数据" class="headerlink" title="2. udp网络程序-发送、接收数据"></a>2. udp网络程序-发送、接收数据</h4><p>代码如下：</p>
+<pre><code>#coding=utf-8
+
+from socket import *
+
+# 1. 创建udp套接字
+udp_socket = socket(AF_INET, SOCK_DGRAM)
+
+# 2. 准备接收方的地址
+dest_addr = (&apos;192.168.236.129&apos;, 8080)
+
+# 3. 从键盘获取数据
+send_data = input(&quot;请输入要发送的数据:&quot;)
+
+# 4. 发送数据到指定的电脑上
+udp_socket.sendto(send_data.encode(&apos;utf-8&apos;), dest_addr)
+
+# 5. 等待接收对方发送的数据
+recv_data = udp_socket.recvfrom(1024)  # 1024表示本次接收的最大字节数
+
+# 6. 显示对方发送的数据
+# 接收到的数据recv_data是一个元组
+# 第1个元素是对方发送的数据
+# 第2个元素是对方的ip和端口
+print(recv_data[0].decode(&apos;gbk&apos;))
+print(recv_data[1])
+
+# 可以简写成
+# recv_data, client_addr = udp_socket.recvfrom(1024)
+
+# 7. 关闭套接字
+udp_socket.close()
+</code></pre>
           
         
       
@@ -1561,25 +2171,61 @@ gevent.joinall([
         
           
             <h2 id="tcp网络编程基础"><a href="#tcp网络编程基础" class="headerlink" title="tcp网络编程基础"></a>tcp网络编程基础</h2><hr>
-<h4 id="1-tcp客户端"><a href="#1-tcp客户端" class="headerlink" title="1.tcp客户端"></a>1.tcp客户端</h4><p>  from socket import *</p>
-<h1 id="创建socket"><a href="#创建socket" class="headerlink" title="创建socket"></a>创建socket</h1><p>  tcp_client_socket = socket(AF_INET, SOCK_STREAM)</p>
-<h1 id="目的信息"><a href="#目的信息" class="headerlink" title="目的信息"></a>目的信息</h1><p>  server_ip = input(“请输入服务器ip:”)<br>  server_port = int(input(“请输入服务器port:”))</p>
-<h1 id="链接服务器"><a href="#链接服务器" class="headerlink" title="链接服务器"></a>链接服务器</h1><p>  tcp_client_socket.connect((server_ip, server_port))</p>
-<h1 id="提示用户输入数据"><a href="#提示用户输入数据" class="headerlink" title="提示用户输入数据"></a>提示用户输入数据</h1><p>  send_data = input(“请输入要发送的数据：”)</p>
-<p>  tcp_client_socket.send(send_data.encode(“gbk”))</p>
-<h1 id="接收对方发送过来的数据，最大接收1024个字节"><a href="#接收对方发送过来的数据，最大接收1024个字节" class="headerlink" title="接收对方发送过来的数据，最大接收1024个字节"></a>接收对方发送过来的数据，最大接收1024个字节</h1><p>  recvData = tcp_client_socket.recv(1024)<br>  print(‘接收到的数据为:’, recvData.decode(‘gbk’))</p>
-<h1 id="关闭套接字"><a href="#关闭套接字" class="headerlink" title="关闭套接字"></a>关闭套接字</h1><p>  tcp_client_socket.close()</p>
-<h4 id="2-tcp服务器"><a href="#2-tcp服务器" class="headerlink" title="2.tcp服务器"></a>2.tcp服务器</h4><p>流程如下：<br>1.socket创建一个套接字<br>2.bind绑定ip和port<br>3.listen使套接字变为可以被动链接<br>4.accept等待客户端的链接<br>5.recv/send接收发送数据</p>
-<p>代码如下：<br>  from socket import *</p>
-<h1 id="创建socket-1"><a href="#创建socket-1" class="headerlink" title="创建socket"></a>创建socket</h1><p>  tcp_server_socket = socket(AF_INET, SOCK_STREAM)</p>
-<h1 id="本地信息（不写ip默认本机127-0-0-1）"><a href="#本地信息（不写ip默认本机127-0-0-1）" class="headerlink" title="本地信息（不写ip默认本机127.0.0.1）"></a>本地信息（不写ip默认本机127.0.0.1）</h1><p>  address = (‘127.0.0.1’, 7788)</p>
-<h1 id="绑定"><a href="#绑定" class="headerlink" title="绑定"></a>绑定</h1><p>  tcp_server_socket.bind(address)</p>
-<h1 id="使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了"><a href="#使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了" class="headerlink" title="使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了"></a>使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了</h1><p>  #监听<br>  tcp_server_socket.listen(128)</p>
-<h1 id="如果有新的客户端来链接服务器，那么就产生一个新的套接字专门为这个客户端服务"><a href="#如果有新的客户端来链接服务器，那么就产生一个新的套接字专门为这个客户端服务" class="headerlink" title="如果有新的客户端来链接服务器，那么就产生一个新的套接字专门为这个客户端服务"></a>如果有新的客户端来链接服务器，那么就产生一个新的套接字专门为这个客户端服务</h1><h1 id="client-socket用来为这个客户端服务"><a href="#client-socket用来为这个客户端服务" class="headerlink" title="client_socket用来为这个客户端服务"></a>client_socket用来为这个客户端服务</h1><h1 id="tcp-server-socket就可以省下来专门等待其他新客户端的链接"><a href="#tcp-server-socket就可以省下来专门等待其他新客户端的链接" class="headerlink" title="tcp_server_socket就可以省下来专门等待其他新客户端的链接"></a>tcp_server_socket就可以省下来专门等待其他新客户端的链接</h1><p>  client_socket, clientAddr = tcp_server_socket.accept()</p>
-<h1 id="接收对方发送过来的数据"><a href="#接收对方发送过来的数据" class="headerlink" title="接收对方发送过来的数据"></a>接收对方发送过来的数据</h1><p>  recv_data = client_socket.recv(1024)  # 接收1024个字节<br>  print(‘接收到的数据为:’, recv_data.decode(‘gbk’))</p>
-<h1 id="发送一些数据到客户端"><a href="#发送一些数据到客户端" class="headerlink" title="发送一些数据到客户端"></a>发送一些数据到客户端</h1><p>  client_socket.send(“thank you !”.encode(‘gbk’))</p>
-<h1 id="关闭为这个客户端服务的套接字，只要关闭了，就意味着为不能再为这个客户端服务了，如果还需要服务，只能再次重新连接"><a href="#关闭为这个客户端服务的套接字，只要关闭了，就意味着为不能再为这个客户端服务了，如果还需要服务，只能再次重新连接" class="headerlink" title="关闭为这个客户端服务的套接字，只要关闭了，就意味着为不能再为这个客户端服务了，如果还需要服务，只能再次重新连接"></a>关闭为这个客户端服务的套接字，只要关闭了，就意味着为不能再为这个客户端服务了，如果还需要服务，只能再次重新连接</h1><p>  client_socket.close()</p>
-<h4 id="3-tcp的3次握手"><a href="#3-tcp的3次握手" class="headerlink" title="3.tcp的3次握手"></a>3.tcp的3次握手</h4><p>  client(客户端连接connect)——–&gt;server(服务端监听listen)———&gt;client(服务端告诉客户端链接已建立)———-&gt;server(客户端告诉服务端链接已建立)</p>
+<h4 id="1-tcp客户端"><a href="#1-tcp客户端" class="headerlink" title="1.tcp客户端"></a>1.tcp客户端</h4><pre><code>from socket import *
+
+# 创建socket
+tcp_client_socket = socket(AF_INET, SOCK_STREAM)
+
+# 目的信息
+server_ip = input(&quot;请输入服务器ip:&quot;)
+server_port = int(input(&quot;请输入服务器port:&quot;))
+
+# 链接服务器
+tcp_client_socket.connect((server_ip, server_port))
+
+# 提示用户输入数据
+send_data = input(&quot;请输入要发送的数据：&quot;)
+
+tcp_client_socket.send(send_data.encode(&quot;gbk&quot;))
+
+# 接收对方发送过来的数据，最大接收1024个字节
+recvData = tcp_client_socket.recv(1024)
+print(&apos;接收到的数据为:&apos;, recvData.decode(&apos;gbk&apos;))
+
+# 关闭套接字
+tcp_client_socket.close()
+</code></pre><h4 id="2-tcp服务器"><a href="#2-tcp服务器" class="headerlink" title="2.tcp服务器"></a>2.tcp服务器</h4><p>流程如下：<br>1.socket创建一个套接字<br>2.bind绑定ip和port<br>3.listen使套接字变为可以被动链接<br>4.accept等待客户端的链接<br>5.recv/send接收发送数据</p>
+<p>代码如下：</p>
+<pre><code>from socket import *
+
+# 创建socket
+tcp_server_socket = socket(AF_INET, SOCK_STREAM)
+
+# 本地信息（不写ip默认本机127.0.0.1）
+address = (&apos;127.0.0.1&apos;, 7788)
+
+# 绑定
+tcp_server_socket.bind(address)
+
+# 使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了
+#监听
+tcp_server_socket.listen(128)
+
+# 如果有新的客户端来链接服务器，那么就产生一个新的套接字专门为这个客户端服务
+# client_socket用来为这个客户端服务
+# tcp_server_socket就可以省下来专门等待其他新客户端的链接
+client_socket, clientAddr = tcp_server_socket.accept()
+
+# 接收对方发送过来的数据
+recv_data = client_socket.recv(1024)  # 接收1024个字节
+print(&apos;接收到的数据为:&apos;, recv_data.decode(&apos;gbk&apos;))
+
+# 发送一些数据到客户端
+client_socket.send(&quot;thank you !&quot;.encode(&apos;gbk&apos;))
+
+# 关闭为这个客户端服务的套接字，只要关闭了，就意味着为不能再为这个客户端服务了，如果还需要服务，只能再次重新连接
+client_socket.close()
+</code></pre><h4 id="3-tcp的3次握手"><a href="#3-tcp的3次握手" class="headerlink" title="3.tcp的3次握手"></a>3.tcp的3次握手</h4><p>  client(客户端连接connect)——–&gt;server(服务端监听listen)———&gt;client(服务端告诉客户端链接已建立)———-&gt;server(客户端告诉服务端链接已建立)</p>
 <h4 id="4-tcp的4次挥手"><a href="#4-tcp的4次挥手" class="headerlink" title="4.tcp的4次挥手"></a>4.tcp的4次挥手</h4><p>  client(客户端告诉服务端要关闭链接close)<br>  —-&gt;server(服务端告诉客户端同意关闭链接close)<br>  —-&gt;client(服务端告诉客户端链接已关闭)<br>  server—-&gt;client(服务端将最后的数据传递给客户端)<br>  —-&gt;server(设置超时等待，确保最后达到关闭状态)</p>
 <h4 id="5-tcp长连接和短连接"><a href="#5-tcp长连接和短连接" class="headerlink" title="5.tcp长连接和短连接"></a>5.tcp长连接和短连接</h4><ol>
 <li><p>TCP短连接</p>
@@ -2070,7 +2716,7 @@ input{
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2092,7 +2738,7 @@ input{
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

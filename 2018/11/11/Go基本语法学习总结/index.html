@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Go," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Go语言基本语法注意点####### 匿名变量 _（下划线）是个特殊的变量名，任何赋予它的值都会被丢弃： _, i, _, j := 1, 2, 3, 4  func test() (int, string) {     return 250, &amp;quot;sb&amp;quot; }  _, str := test() iota枚举常量声明可以使用iota常量生成器初始化，它用于生成一组以相似规则初始化">
+<meta name="keywords" content="Go">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&#39;Go基本语法学习总结&#39;">
+<meta property="og:url" content="https://github.com/KingDragon-Baron/2018/11/11/Go基本语法学习总结/index.html">
+<meta property="og:site_name" content="King Dragon">
+<meta property="og:description" content="Go语言基本语法注意点####### 匿名变量 _（下划线）是个特殊的变量名，任何赋予它的值都会被丢弃： _, i, _, j := 1, 2, 3, 4  func test() (int, string) {     return 250, &amp;quot;sb&amp;quot; }  _, str := test() iota枚举常量声明可以使用iota常量生成器初始化，它用于生成一组以相似规则初始化">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-11T15:12:59.340Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="&#39;Go基本语法学习总结&#39;">
+<meta name="twitter:description" content="Go语言基本语法注意点####### 匿名变量 _（下划线）是个特殊的变量名，任何赋予它的值都会被丢弃： _, i, _, j := 1, 2, 3, 4  func test() (int, string) {     return 250, &amp;quot;sb&amp;quot; }  _, str := test() iota枚举常量声明可以使用iota常量生成器初始化，它用于生成一组以相似规则初始化">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/KingDragon-Baron/2018/11/11/Go基本语法学习总结/"/>
+
+
+
+
+
+  <title>'Go基本语法学习总结' | King Dragon</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">King Dragon</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Stay Hungry, Stay Foolish</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/KingDragon-Baron/2018/11/11/Go基本语法学习总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Baron">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="King Dragon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">'Go基本语法学习总结'</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-11T23:12:03+08:00">
+                2018-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/summary/" itemprop="url" rel="index">
+                    <span itemprop="name">summary</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Go语言基本语法注意点"><a href="#Go语言基本语法注意点" class="headerlink" title="Go语言基本语法注意点"></a>Go语言基本语法注意点</h2><p>####### 匿名变量</p>
+<p>_（下划线）是个特殊的变量名，任何赋予它的值都会被丢弃：</p>
+<pre><code>_, i, _, j := 1, 2, 3, 4
+
+func test() (int, string) {
+    return 250, &quot;sb&quot;
+}
+
+_, str := test()
+</code></pre><h6 id="iota枚举"><a href="#iota枚举" class="headerlink" title="iota枚举"></a>iota枚举</h6><p>常量声明可以使用iota常量生成器初始化，它用于生成一组以相似规则初始化的常量，但是不用每行都写一遍初始化表达式。</p>
+<p>在一个const声明语句中，在第一个声明的常量所在的行，iota将会被置为0，然后在每一个有常量声明的行加一。</p>
+<pre><code>const (
+    x = iota // x == 0
+    y = iota // y == 1
+    z = iota // z == 2
+    w  // 这里隐式地说w = iota，因此w == 3。其实上面y和z可同样不用&quot;= iota&quot;
+)
+
+const v = iota // 每遇到一个const关键字，iota就会重置，此时v == 0
+
+const (
+    h, i, j = iota, iota, iota //h=0,i=0,j=0 iota在同一行值相同
+)
+
+const (
+    a       = iota //a=0
+    b       = &quot;B&quot;
+    c       = iota             //c=2
+    d, e, f = iota, iota, iota //d=3,e=3,f=3
+    g       = iota             //g = 4
+)
+
+const (
+    x1 = iota * 10 // x1 == 0
+    y1 = iota * 10 // y1 == 10
+    z1 = iota * 10 // z1 == 20
+)
+</code></pre><h6 id="fmt包的格式化输出输入"><a href="#fmt包的格式化输出输入" class="headerlink" title="fmt包的格式化输出输入"></a>fmt包的格式化输出输入</h6><pre><code>格式  含义
+%%  一个%字面量
+%b  一个二进制整数值(基数为2)，或者是一个(高级的)用科学计数法表示的指数为2的浮点数
+%c  字符型。可以把输入的数字按照ASCII码相应转换为对应的字符
+%d  一个十进制数值(基数为10)
+%e  以科学记数法e表示的浮点数或者复数值
+%E  以科学记数法E表示的浮点数或者复数值
+%f  以标准记数法表示的浮点数或者复数值
+%g  以%e或者%f表示的浮点数或者复数，任何一个都以最为紧凑的方式输出
+%G  以%E或者%f表示的浮点数或者复数，任何一个都以最为紧凑的方式输出
+%o  一个以八进制表示的数字(基数为8)
+%p  以十六进制(基数为16)表示的一个值的地址，前缀为0x,字母使用小写的a-f表示
+%q  使用Go语法以及必须时使用转义，以双引号括起来的字符串或者字节切片[]byte，或者是以单引号括起来的数字
+%s  字符串。输出字符串中的字符直至字符串中的空字符（字符串以&apos;\0‘结尾，这个&apos;\0&apos;即空字符）
+%t  以true或者false输出的布尔值
+%T  使用Go语法输出的值的类型
+%U  一个用Unicode表示法表示的整型码点，默认值为4个数字字符
+%v  使用默认格式输出的内置或者自定义类型的值，或者是使用其类型的String()方式输出的自定义值，如果该方法存在的话
+%x  以十六进制表示的整型值(基数为十六)，数字a-f使用小写表示
+%X  以十六进制表示的整型值(基数为十六)，数字A-F使用小写表示
+</code></pre><h6 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h6><p>Go语言中不允许隐式转换，所有类型转换必须显式声明，而且转换只能发生在两种相互兼容的类型之间。</p>
+<h6 id="流程控制的特殊点"><a href="#流程控制的特殊点" class="headerlink" title="流程控制的特殊点"></a>流程控制的特殊点</h6><p>if … else if … else：<br>  其中a的作用域在后面的大括号代表的块里。</p>
+<pre><code>if a := 3; a &gt; 3 {
+    fmt.Println(&quot;a&gt;3&quot;)
+} else if a &lt; 3 {
+    fmt.Println(&quot;a&lt;3&quot;)
+} else if a == 3 {
+    fmt.Println(&quot;a==3&quot;)
+} else {
+    fmt.Println(&quot;error&quot;)
+}
+</code></pre><p>switch语句：<br>  Go里面switch默认相当于每个case最后带有break，匹配成功后不会自动向下执行其他case，而是跳出整个switch, 但是可以使用fallthrough强制执行后面的case代码：<br>      switch s3 := 90; { //只有初始化语句，没有条件<br>      case s3 &gt;= 90: //这里写判断语句<br>          fmt.Println(“优秀”)<br>      case s3 &gt;= 80:<br>          fmt.Println(“良好”)<br>      default:<br>          fmt.Println(“一般”)<br>      }</p>
+<p>for（只有一种循环结构）：</p>
+<p>死循环：</p>
+<pre><code>for {
+    //循环体
+}
+</code></pre><p>迭代：<br>  关键字 range 会返回两个值，第一个返回值是元素的数组下标，第二个返回值是元素的值。</p>
+<pre><code>for i, c := range s {
+    fmt.Printf(&quot;%d, %c\n&quot;, i, c)
+}
+</code></pre><h6 id="函数的特殊点"><a href="#函数的特殊点" class="headerlink" title="函数的特殊点"></a>函数的特殊点</h6><p>函数声明：<br>    //求2个数的最小值和最大值<br>    func MinAndMax(num1 int, num2 int) (min int, max int) {<br>      // 第一个（）内是参数，第二个（）是返回值<br>        if num1 &gt; num2 { //如果num1 大于 num2<br>            min = num2<br>            max = num1<br>        } else {<br>            max = num2<br>            min = num1<br>        }</p>
+<pre><code>    return  // return会自动识别返回
+}
+
+func main() {
+    min, max := MinAndMax(33, 22)
+    fmt.Printf(&quot;min = %d, max = %d\n&quot;, min, max) //min = 22, max = 33
+}
+</code></pre><p>延迟调用defer：<br>  关键字 defer ⽤于延迟一个函数或者方法（或者当前所创建的匿名函数）的执行。注意，defer语句只能出现在函数或方法的内部。多个defer语句，按先进后出的方式执行。</p>
+<pre><code>func main() {
+    defer fmt.Println(&quot;this is a defer&quot;) //main结束前调用
+    fmt.Println(&quot;this is a test&quot;)
+    defer fmt.Println(&quot;this is a defer2&quot;)
+    /*
+        运行结果：
+        this is a test
+        this is a defer2
+        this is a defer
+    */
+}
+</code></pre><h6 id="工作区的概念"><a href="#工作区的概念" class="headerlink" title="工作区的概念"></a>工作区的概念</h6><p>  Go代码必须放在工作区中。工作区其实就是一个对应于特定工程的目录，它应包含3个子目录：src目录、pkg目录和bin目录。</p>
+<p>   src目录：用于以代码包的形式组织并保存Go源码文件。（比如：.go .c .h .s等）<br>   pkg目录：用于存放经由go install命令构建安装后的代码包（包含Go库源码文件）的“.a”归档文件。<br>   bin目录：与pkg目录类似，在通过go install命令完成安装后，保存由Go命令源码文件生成的可执行文件。</p>
+<h6 id="包的概念"><a href="#包的概念" class="headerlink" title="包的概念"></a>包的概念</h6><p>  所有 Go 语言的程序都会组织成若干组文件，每组文件被称为一个包。这样每个包的代码都可以作为很小的复用单元，被其他项目引用。<br>  一个包的源代码保存在一个或多个以.go为文件后缀名的源文件中，通常一个包所在目录路径的后缀是包的导入路径。</p>
+<p>  在Go语言中，代码包中的源码文件名可以是任意的。但是，这些任意名称的源码文件都必须以包声明语句作为文件中的第一行，每个包都对应一个独立的名字空间：<br>    package calc</p>
+<p>  包中成员以名称首字母大小写决定访问权限：<br>   public: 首字母大写，可被包外访问<br>   private: 首字母小写，仅包内成员可以访问</p>
+<p>  注意：同一个目录下不能定义不同的package。</p>
+<p>  ====== main包 ======</p>
+<pre><code> 在 Go 语言里，命名为 main 的包具有特殊的含义。 Go 语言的编译程序会试图把这种名字的包编译为二进制可执行文件。所有用 Go 语言编译的可执行程序都必须有一个名叫 main 的包。一个可执行程序有且仅有一个 main 包。
+
+当编译器发现某个包的名字为 main 时，它一定也会发现名为 main()的函数，否则不会创建可执行文件。 main()函数是程序的入口，所以，如果没有这个函数，程序就没有办法开始执行。程序编译时，会使用声明 main 包的代码所在的目录的目录名作为二进制可执行文件的文件名。
+</code></pre><p>  ====== main函数和init函数 ======</p>
+<pre><code>Go里面有两个保留的函数：init函数（能够应用于所有的package）和main函数（只能应用于package main）。这两个函数在定义时不能有任何的参数和返回值。虽然一个package里面可以写任意多个init函数，但这无论是对于可读性还是以后的可维护性来说，我们都强烈建议用户在一个package中每个文件只写一个init函数。
+
+Go程序会自动调用init()和main()，所以你不需要在任何地方调用这两个函数。每个package中的init函数都是可选的，但package main就必须包含一个main函数。
+
+每个包可以包含任意多个 init 函数，这些函数都会在程序执行开始的时候被调用。所有被
+编译器发现的 init 函数都会安排在 main 函数之前执行。 init 函数用在设置包、初始化变量或者其他要在程序运行前优先完成的引导工作。
+
+程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。
+有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。
+
+当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。
+</code></pre><h6 id="指针相关注意点"><a href="#指针相关注意点" class="headerlink" title="指针相关注意点"></a>指针相关注意点</h6><p>  Go语言虽然保留了指针，但与其它编程语言不同的是：<br>   默认值 nil，没有 NULL 常量<br>   操作符 “&amp;” 取变量地址， “*” 通过指针访问目标对象<br>   不支持指针运算，不支持 “-&gt;” 运算符，直接⽤ “.” 访问目标成员</p>
+<h6 id="切片相关注意点"><a href="#切片相关注意点" class="headerlink" title="切片相关注意点"></a>切片相关注意点</h6><p>  切片存在的意义：数组的长度在定义之后无法再次修改；数组是值类型，每次传递都将产生一份副本。显然这种数据结构无法完全满足开发者的真实需求。Go语言提供了数组切片（slice）来弥补数组的不足。</p>
+<p>  切片并不是数组或数组指针，它通过内部指针和相关属性引用数组片段，以实现变长案。</p>
+<p>  slice和数组的区别：声明数组时，方括号内写明了数组的长度或使用…自动计算长度，而声明slice时，方括号内没有任何字符。</p>
+<p>  ====== 切片做函数参数 ======</p>
+<p>  切片本身即是一种引用。</p>
+<pre><code>func test(s []int) { //切片做函数参数
+    s[0] = -1
+    fmt.Println(&quot;test : &quot;)
+    for i, v := range s {
+        fmt.Printf(&quot;s[%d]=%d, &quot;, i, v)
+        //s[0]=-1, s[1]=1, s[2]=2, s[3]=3, s[4]=4, s[5]=5, s[6]=6, s[7]=7, s[8]=8, s[9]=9,
+    }
+    fmt.Println(&quot;\n&quot;)
+}
+
+func main() {
+    slice := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+    test(slice)
+
+    fmt.Println(&quot;main : &quot;)
+    for i, v := range slice {
+        fmt.Printf(&quot;slice[%d]=%d, &quot;, i, v)
+        //slice[0]=-1, slice[1]=1, slice[2]=2, slice[3]=3, slice[4]=4, slice[5]=5, slice[6]=6, slice[7]=7, slice[8]=8, slice[9]=9,
+    }
+    fmt.Println(&quot;\n&quot;)
+}
+</code></pre><h6 id="map相关知识点"><a href="#map相关知识点" class="headerlink" title="map相关知识点"></a>map相关知识点</h6><p>  Go语言中的map(映射、字典)是一种内置的数据结构，它是一个无序的key—value对的集合，比如以身份证号作为唯一键来标识一个人的信息。<br>  map格式为：<br>        map[keyType]valueType</p>
+<p>   ======= map做函数参数 ======</p>
+<p>   在函数间传递映射并不会制造出该映射的一个副本，不是值传递，而是引用传递：</p>
+<pre><code>func DeleteMap(m map[int]string, key int) {
+    delete(m, key) //删除key值为3的map
+
+    for k, v := range m {
+        fmt.Printf(&quot;len(m)=%d, %d ----&gt; %s\n&quot;, len(m), k, v)
+        //len(m)=2, 1 ----&gt; mike
+        //len(m)=2, 3 ----&gt; lily
+    }
+}
+
+func main() {
+    m := map[int]string{1: &quot;mike&quot;, 2: &quot;yoyo&quot;, 3: &quot;lily&quot;}
+
+    DeleteMap(m, 2) //删除key值为3的map
+
+    for k, v := range m {
+        fmt.Printf(&quot;len(m)=%d, %d ----&gt; %s\n&quot;, len(m), k, v)
+        //len(m)=2, 1 ----&gt; mike
+        //len(m)=2, 3 ----&gt; lily
+    }
+}
+</code></pre><h6 id="结构体相关概念"><a href="#结构体相关概念" class="headerlink" title="结构体相关概念"></a>结构体相关概念</h6><p>  ====== 结构体初始化 ======</p>
+<p>  普通变量：<br>    type Student struct {<br>        id   int<br>        name string<br>        sex  byte<br>        age  int<br>        addr string<br>    }<br>    func main() {<br>        //1、顺序初始化，必须每个成员都初始化<br>        var s1 Student = Student{1, “mike”, ‘m’, 18, “sz”}<br>        s2 := Student{2, “yoyo”, ‘f’, 20, “sz”}<br>        //s3 := Student{2, “tom”, ‘m’, 20} //err, too few values in struct initializer</p>
+<pre><code>    //2、指定初始化某个成员，没有初始化的成员为零值
+    s4 := Student{id: 2, name: &quot;lily&quot;}
+}
+
+指针变量：
+type Student struct {
+    id   int
+    name string
+    sex  byte
+    age  int
+    addr string
+}
+
+func main() {
+    var s5 *Student = &amp;Student{3, &quot;xiaoming&quot;, &apos;m&apos;, 16, &quot;bj&quot;}
+    s6 := &amp;Student{4, &quot;rocco&quot;, &apos;m&apos;, 3, &quot;sh&quot;}
+}
+</code></pre><h6 id="Go的面向对象编程"><a href="#Go的面向对象编程" class="headerlink" title="Go的面向对象编程"></a>Go的面向对象编程</h6><p>尽管Go语言中没有封装、继承、多态这些概念，但同样通过别的方式实现这些特性：<br> 封装：通过方法实现<br> 继承：通过匿名字段实现<br> 多态：通过接口实现</p>
+<p>  ====== 匿名字段 ======</p>
+<pre><code>一般情况下，定义结构体的时候是字段名与其类型一一对应，实际上Go支持只提供类型，而不写字段名的方式，也就是匿名字段，也称为嵌入字段。
+
+  //人
+  type Person struct {
+      name string
+      sex  byte
+      age  int
+  }
+
+  //学生
+  type Student struct {
+      Person // 匿名字段，那么默认Student就包含了Person的所有字段
+      id     int
+      addr   string
+  }
+
+  func main() {
+      //顺序初始化
+      s1 := Student{Person{&quot;mike&quot;, &apos;m&apos;, 18}, 1, &quot;sz&quot;}
+      //s1 = {Person:{name:mike sex:109 age:18} id:1 addr:sz}
+      fmt.Printf(&quot;s1 = %+v\n&quot;, s1)
+
+      //s2 := Student{&quot;mike&quot;, &apos;m&apos;, 18, 1, &quot;sz&quot;} //err
+
+      //部分成员初始化1
+      s3 := Student{Person: Person{&quot;lily&quot;, &apos;f&apos;, 19}, id: 2}
+      //s3 = {Person:{name:lily sex:102 age:19} id:2 addr:}
+      fmt.Printf(&quot;s3 = %+v\n&quot;, s3)
+
+      //部分成员初始化2
+      s4 := Student{Person: Person{name: &quot;tom&quot;}, id: 3}
+      //s4 = {Person:{name:tom sex:0 age:0} id:3 addr:}
+      fmt.Printf(&quot;s4 = %+v\n&quot;, s4)
+  }
+
+====== 方法 ======
+
+在面向对象编程中，一个对象其实也就是一个简单的值或者一个变量，在这个对象中会包含一些函数，这种带有接收者的函数，我们称为方法(method)。 本质上，一个方法则是一个和特殊类型关联的函数。
+
+在Go语言中，可以给任意自定义类型（包括内置类型，但不包括指针类型）添加相应的方法。
+
+方法总是绑定对象实例，并隐式将实例作为第一实参 (receiver)，方法的语法如下：
+    func (receiver ReceiverType) funcName(parameters) (results)
+</code></pre><p>     参数 receiver 可任意命名。如方法中未曾使用，可省略参数名。<br>     参数 receiver 类型可以是 T 或 *T。基类型 T 不能是接口或指针。<br>     不支持重载方法，也就是说，不能定义名字相同但是不同参数的方法。</p>
+<p>  ====== 接口 ======</p>
+<p>  在Go语言中，接口(interface)是一个自定义类型，接口类型具体描述了一系列方法的集合。</p>
+<p>  接口类型是一种抽象的类型，它不会暴露出它所代表的对象的内部值的结构和这个对象支持的基础操作的集合，它们只会展示出它们自己的方法。因此接口类型不能将其实例化。</p>
+<p>  ====== 接口定义 ======<br>      type Humaner interface {<br>          SayHi()<br>      }<br> 接口命名习惯以 er 结尾<br> 接口只有方法声明，没有实现，没有数据字段<br> 接口可以匿名嵌入其它接口，或嵌入到结构中</p>
+<pre><code>== 空接口 ==
+空接口(interface{})不包含任何的方法，正因为如此，所有的类型都实现了空接口，因此空接口可以存储任意类型的数值。它有点类似于C语言的void *类型。
+
+当函数可以接受任意的对象实例时，我们会将其声明为interface{}，最典型的例子是标准库fmt中PrintXXX系列的函数，例如：
+      func Printf(fmt string, args ...interface{})
+      func Println(args ...interface{})
+</code></pre><h6 id="类型查询"><a href="#类型查询" class="headerlink" title="类型查询"></a>类型查询</h6><p>  我们知道interface的变量里面可以存储任意类型的数值(该类型实现了interface)。那么我们怎么反向知道这个变量里面实际保存了的是哪个类型的对象呢？目前常用的有两种方法：<br>   comma-ok断言<br>   switch测试</p>
+<p>  ====== comma-ok断言 ======</p>
+<pre><code>Go语言里面有一个语法，可以直接判断是否是该类型的变量： value, ok = element.(T)，这里value就是变量的值，ok是一个bool类型，element是interface变量，T是断言的类型。如果element里面确实存储了T类型的数值，那么ok返回true，否则返回false。
+
+    type Element interface{}
+
+    type Person struct {
+        name string
+        age  int
+    }
+
+    func main() {
+        list := make([]Element, 3)
+        list[0] = 1       // an int
+        list[1] = &quot;Hello&quot; // a string
+        list[2] = Person{&quot;mike&quot;, 18}
+
+        for index, element := range list {
+            if value, ok := element.(int); ok {
+                fmt.Printf(&quot;list[%d] is an int and its value is %d\n&quot;, index, value)
+            } else if value, ok := element.(string); ok {
+                fmt.Printf(&quot;list[%d] is a string and its value is %s\n&quot;, index, value)
+            } else if value, ok := element.(Person); ok {
+                fmt.Printf(&quot;list[%d] is a Person and its value is [%s, %d]\n&quot;, index, value.name, value.age)
+            } else {
+                fmt.Printf(&quot;list[%d] is of a different type\n&quot;, index)
+            }
+        }
+
+        /*  打印结果：
+        list[0] is an int and its value is 1
+        list[1] is a string and its value is Hello
+        list[2] is a Person and its value is [mike, 18]
+        */
+    }
+</code></pre><p>  ====== switch测试 ======</p>
+<pre><code>type Element interface{}
+
+type Person struct {
+    name string
+    age  int
+}
+
+func main() {
+    list := make([]Element, 3)
+    list[0] = 1       //an int
+    list[1] = &quot;Hello&quot; //a string
+    list[2] = Person{&quot;mike&quot;, 18}
+
+    for index, element := range list {
+        switch value := element.(type) {
+        case int:
+            fmt.Printf(&quot;list[%d] is an int and its value is %d\n&quot;, index, value)
+        case string:
+            fmt.Printf(&quot;list[%d] is a string and its value is %s\n&quot;, index, value)
+        case Person:
+            fmt.Printf(&quot;list[%d] is a Person and its value is [%s, %d]\n&quot;, index, value.name, value.age)
+        default:
+            fmt.Println(&quot;list[%d] is of a different type&quot;, index)
+        }
+    }
+}
+</code></pre><h6 id="异常处理相关"><a href="#异常处理相关" class="headerlink" title="异常处理相关"></a>异常处理相关</h6><p>  Go语言引入了一个关于错误处理的标准模式，即error接口，它是Go语言内建的接口类型，该接口的定义如下：<br>      type error interface {<br>          Error() string<br>      }</p>
+<p>  Go语言的标准库代码包errors为用户提供如下方法：<br>      package errors</p>
+<pre><code>type errorString struct { 
+    text string 
+}
+
+func New(text string) error { 
+    return &amp;errorString{text} 
+}
+
+func (e *errorString) Error() string { 
+    return e.text 
+}
+</code></pre><p>  ====== panic ======</p>
+<pre><code>在通常情况下，向程序使用方报告错误状态的方式可以是返回一个额外的error类型值。
+但是，当遇到不可恢复的错误状态的时候，如数组访问越界、空指针引用等，这些运行时错误会引起painc异常。这时，上述错误处理方式显然就不适合了。反过来讲，在一般情况下，我们不应通过调用panic函数来报告普通的错误，而应该只把它作为报告致命错误的一种方式。当某些不应该发生的场景发生时，我们就应该调用panic。
+</code></pre><h6 id="字符串相关方法"><a href="#字符串相关方法" class="headerlink" title="字符串相关方法"></a>字符串相关方法</h6><p>func Contains(s, substr string) bool<br>功能：字符串s中是否包含substr，返回bool值</p>
+<p>func Join(a []string, sep string) string<br>功能：字符串链接，把slice a通过sep链接起来</p>
+<p>func Index(s, sep string) int<br>功能：在字符串s中查找sep所在的位置，返回位置值，找不到返回-1</p>
+<p>func Repeat(s string, count int) string<br>功能：重复s字符串count次，最后返回重复的字符串</p>
+<p>func Replace(s, old, new string, n int) string<br>功能：在s字符串中，把old字符串替换为new字符串，n表示替换的次数，小于0表示全部替换</p>
+<p>func Split(s, sep string) []string<br>功能：把s字符串按照sep分割，返回slice</p>
+<p>func Trim(s string, cutset string) string<br>功能：在s字符串的头部和尾部去除cutset指定的字符串</p>
+<p>func Fields(s string) []string<br>功能：去除s字符串的空格符，并且按照空格分割返回slice</p>
+<p>Append 系列函数将整数等转换为字符串后，添加到现有的字节数组中。</p>
+<p>Format 系列函数把其他类型的转换为字符串。</p>
+<p>Parse 系列函数把字符串转换为其他类型。</p>
+<h6 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h6><pre><code>package main
+
+import (
+    &quot;fmt&quot;
+    &quot;regexp&quot;
+)
+
+func main() {
+    context1 := &quot;3.14 123123 .68 haha 1.0 abc 6.66 123.&quot;
+
+    //MustCompile解析并返回一个正则表达式。如果成功返回，该Regexp就可用于匹配文本。
+    //解析失败时会产生panic
+    // \d 匹配数字[0-9]，d+ 重复&gt;=1次匹配d，越多越好（优先重复匹配d）
+    exp1 := regexp.MustCompile(`\d+\.\d+`)
+
+    //返回保管正则表达式所有不重叠的匹配结果的[]string切片。如果没有匹配到，会返回nil。
+    //result1 := exp1.FindAllString(context1, -1) //[3.14 1.0 6.66]
+    result1 := exp1.FindAllStringSubmatch(context1, -1) //[[3.14] [1.0] [6.66]]
+
+    fmt.Printf(&quot;%v\n&quot;, result1)
+    fmt.Printf(&quot;\n------------------------------------\n\n&quot;)
+
+    context2 := `
+        &lt;title&gt;标题&lt;/title&gt;
+        &lt;div&gt;你过来啊&lt;/div&gt;
+        &lt;div&gt;hello mike&lt;/div&gt;
+        &lt;div&gt;你大爷&lt;/div&gt;
+        &lt;body&gt;呵呵&lt;/body&gt;
+    `
+    //(.*?)被括起来的表达式作为分组
+    //匹配&lt;div&gt;xxx&lt;/div&gt;模式的所有子串
+    exp2 := regexp.MustCompile(`&lt;div&gt;(.*?)&lt;/div&gt;`)
+    result2 := exp2.FindAllStringSubmatch(context2, -1)
+
+    //[[&lt;div&gt;你过来啊&lt;/div&gt; 你过来啊] [&lt;div&gt;hello mike&lt;/div&gt; hello mike] [&lt;div&gt;你大爷&lt;/div&gt; 你大爷]]
+    fmt.Printf(&quot;%v\n&quot;, result2)
+    fmt.Printf(&quot;\n------------------------------------\n\n&quot;)
+
+    context3 := `
+        &lt;title&gt;标题&lt;/title&gt;
+        &lt;div&gt;你过来啊&lt;/div&gt;
+        &lt;div&gt;hello 
+        mike
+        go&lt;/div&gt;
+        &lt;div&gt;你大爷&lt;/div&gt;
+        &lt;body&gt;呵呵&lt;/body&gt;
+    `
+    exp3 := regexp.MustCompile(`&lt;div&gt;(.*?)&lt;/div&gt;`)
+    result3 := exp3.FindAllStringSubmatch(context3, -1)
+
+    //[[&lt;div&gt;你过来啊&lt;/div&gt; 你过来啊] [&lt;div&gt;你大爷&lt;/div&gt; 你大爷]]
+    fmt.Printf(&quot;%v\n&quot;, result3)
+    fmt.Printf(&quot;\n------------------------------------\n\n&quot;)
+
+    context4 := `
+        &lt;title&gt;标题&lt;/title&gt;
+        &lt;div&gt;你过来啊&lt;/div&gt;
+        &lt;div&gt;hello 
+        mike
+        go&lt;/div&gt;
+        &lt;div&gt;你大爷&lt;/div&gt;
+        &lt;body&gt;呵呵&lt;/body&gt;
+    `
+    exp4 := regexp.MustCompile(`&lt;div&gt;(?s:(.*?))&lt;/div&gt;`)
+    result4 := exp4.FindAllStringSubmatch(context4, -1)
+
+    /*
+        [[&lt;div&gt;你过来啊&lt;/div&gt; 你过来啊] [&lt;div&gt;hello
+            mike
+            go&lt;/div&gt; hello
+            mike
+            go] [&lt;div&gt;你大爷&lt;/div&gt; 你大爷]]
+    */
+    fmt.Printf(&quot;%v\n&quot;, result4)
+    fmt.Printf(&quot;\n------------------------------------\n\n&quot;)
+
+    for _, text := range result4 {
+        fmt.Println(text[0]) //带有div
+        fmt.Println(text[1]) //不带带有div
+        fmt.Println(&quot;================\n&quot;)
+    }
+}
+</code></pre><h6 id="json处理"><a href="#json处理" class="headerlink" title="json处理"></a>json处理</h6><p>  使用json.Marshal()函数可以对一组数据进行JSON格式的编码。<br>  使用json.Unmarshal()函数将JSON格式的文本解码为Go里面预期的数据结构。</p>
+<h6 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h6><p>新建文件可以通过如下两个方法：<br>    func Create(name string) (file *File, err Error)<br>    根据提供的文件名创建新的文件，返回一个文件对象，默认权限是0666的文件，返回的文件对象是可读写的。</p>
+<pre><code>func NewFile(fd uintptr, name string) *File
+根据文件描述符创建相应的文件，返回一个文件对象
+</code></pre><p>通过如下两个方法来打开文件：<br>    func Open(name string) (file *File, err Error)<br>    该方法打开一个名称为name的文件，但是是只读方式，内部实现其实调用了OpenFile。</p>
+<pre><code>func OpenFile(name string, flag int, perm uint32) (file *File, err Error)
+打开名称为name的文件，flag是打开的方式，只读、读写等，perm是权限
+</code></pre><p>写文件：<br>    func (file *File) Write(b []byte) (n int, err Error)<br>    写入byte类型的信息到文件</p>
+<pre><code>func (file *File) WriteAt(b []byte, off int64) (n int, err Error)
+在指定位置开始写入byte类型的信息
+
+func (file *File) WriteString(s string) (ret int, err Error)
+写入string信息到文件
+</code></pre><p> 读文件：<br>    func (file *File) Read(b []byte) (n int, err Error)<br>    读取数据到b中</p>
+<pre><code>func (file *File) ReadAt(b []byte, off int64) (n int, err Error)
+从off开始读取数据到b中
+</code></pre><p>删除文件<br>    func Remove(name string) Error<br>    调用该函数就可以删除文件名为name的文件</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Go/" rel="tag"># Go</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/08/线程、进程、协程实现web静态服务器/" rel="next" title="线程、进程、协程实现web静态服务器">
+                <i class="fa fa-chevron-left"></i> 线程、进程、协程实现web静态服务器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Baron" />
+            
+              <p class="site-author-name" itemprop="name">Baron</p>
+              <p class="site-description motion-element" itemprop="description">Baron个人站，主要涉及前端知识共享、实践教程、前沿技术共同学习等方面</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/KingDragon-Baron" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:ecustfengyun@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/ecustfengyun" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Go语言基本语法注意点"><span class="nav-number">1.</span> <span class="nav-text">Go语言基本语法注意点</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#iota枚举"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">iota枚举</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#fmt包的格式化输出输入"><span class="nav-number">1.0.0.0.2.</span> <span class="nav-text">fmt包的格式化输出输入</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#类型转换"><span class="nav-number">1.0.0.0.3.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#流程控制的特殊点"><span class="nav-number">1.0.0.0.4.</span> <span class="nav-text">流程控制的特殊点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#函数的特殊点"><span class="nav-number">1.0.0.0.5.</span> <span class="nav-text">函数的特殊点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#工作区的概念"><span class="nav-number">1.0.0.0.6.</span> <span class="nav-text">工作区的概念</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#包的概念"><span class="nav-number">1.0.0.0.7.</span> <span class="nav-text">包的概念</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#指针相关注意点"><span class="nav-number">1.0.0.0.8.</span> <span class="nav-text">指针相关注意点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#切片相关注意点"><span class="nav-number">1.0.0.0.9.</span> <span class="nav-text">切片相关注意点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#map相关知识点"><span class="nav-number">1.0.0.0.10.</span> <span class="nav-text">map相关知识点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#结构体相关概念"><span class="nav-number">1.0.0.0.11.</span> <span class="nav-text">结构体相关概念</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Go的面向对象编程"><span class="nav-number">1.0.0.0.12.</span> <span class="nav-text">Go的面向对象编程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#类型查询"><span class="nav-number">1.0.0.0.13.</span> <span class="nav-text">类型查询</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#异常处理相关"><span class="nav-number">1.0.0.0.14.</span> <span class="nav-text">异常处理相关</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#字符串相关方法"><span class="nav-number">1.0.0.0.15.</span> <span class="nav-text">字符串相关方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#正则表达式"><span class="nav-number">1.0.0.0.16.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#json处理"><span class="nav-number">1.0.0.0.17.</span> <span class="nav-text">json处理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#文件操作"><span class="nav-number">1.0.0.0.18.</span> <span class="nav-text">文件操作</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Baron</span>
+
+  
+</div>
+
+
+  <div class="powered-by">个人专属</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">博客-Baron &mdash; NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

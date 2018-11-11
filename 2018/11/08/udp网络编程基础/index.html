@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="udp网络程序-发送、接收数据 1. udp网络程序-发送数据创建一个基于udp的网络程序流程很简单，具体步骤如下： 1.创建客户端套接字2.发送/接收数据3.关闭套接字 代码如下：   #coding=utf-8   from socket import * 1. 创建udp套接字  udp_socket = socket(AF_INET, SOCK_DGRAM) 2. 准备接收方的地址‘192">
+<meta name="description" content="udp网络程序-发送、接收数据 1. udp网络程序-发送数据创建一个基于udp的网络程序流程很简单，具体步骤如下： 1.创建客户端套接字2.发送/接收数据3.关闭套接字 代码如下： #coding=utf-8  from socket import *  # 1. 创建udp套接字 udp_socket = socket(AF_INET, SOCK_DGRAM)  # 2. 准备接收方的地址 #">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="udp网络编程基础">
 <meta property="og:url" content="https://github.com/KingDragon-Baron/2018/11/08/udp网络编程基础/index.html">
 <meta property="og:site_name" content="King Dragon">
-<meta property="og:description" content="udp网络程序-发送、接收数据 1. udp网络程序-发送数据创建一个基于udp的网络程序流程很简单，具体步骤如下： 1.创建客户端套接字2.发送/接收数据3.关闭套接字 代码如下：   #coding=utf-8   from socket import * 1. 创建udp套接字  udp_socket = socket(AF_INET, SOCK_DGRAM) 2. 准备接收方的地址‘192">
+<meta property="og:description" content="udp网络程序-发送、接收数据 1. udp网络程序-发送数据创建一个基于udp的网络程序流程很简单，具体步骤如下： 1.创建客户端套接字2.发送/接收数据3.关闭套接字 代码如下： #coding=utf-8  from socket import *  # 1. 创建udp套接字 udp_socket = socket(AF_INET, SOCK_DGRAM)  # 2. 准备接收方的地址 #">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-08T15:50:12.330Z">
+<meta property="og:updated_time" content="2018-11-08T15:57:12.696Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="udp网络编程基础">
-<meta name="twitter:description" content="udp网络程序-发送、接收数据 1. udp网络程序-发送数据创建一个基于udp的网络程序流程很简单，具体步骤如下： 1.创建客户端套接字2.发送/接收数据3.关闭套接字 代码如下：   #coding=utf-8   from socket import * 1. 创建udp套接字  udp_socket = socket(AF_INET, SOCK_DGRAM) 2. 准备接收方的地址‘192">
+<meta name="twitter:description" content="udp网络程序-发送、接收数据 1. udp网络程序-发送数据创建一个基于udp的网络程序流程很简单，具体步骤如下： 1.创建客户端套接字2.发送/接收数据3.关闭套接字 代码如下： #coding=utf-8  from socket import *  # 1. 创建udp套接字 udp_socket = socket(AF_INET, SOCK_DGRAM)  # 2. 准备接收方的地址 #">
 
 
 
@@ -346,24 +346,59 @@
 <h4 id="1-udp网络程序-发送数据"><a href="#1-udp网络程序-发送数据" class="headerlink" title="1. udp网络程序-发送数据"></a>1. udp网络程序-发送数据</h4><p>创建一个基于udp的网络程序流程很简单，具体步骤如下：</p>
 <p>1.创建客户端套接字<br>2.发送/接收数据<br>3.关闭套接字</p>
 <p>代码如下：</p>
-<p>  #coding=utf-8</p>
-<p>  from socket import *</p>
-<h1 id="1-创建udp套接字"><a href="#1-创建udp套接字" class="headerlink" title="1. 创建udp套接字"></a>1. 创建udp套接字</h1><p>  udp_socket = socket(AF_INET, SOCK_DGRAM)</p>
-<h1 id="2-准备接收方的地址"><a href="#2-准备接收方的地址" class="headerlink" title="2. 准备接收方的地址"></a>2. 准备接收方的地址</h1><h1 id="‘192-168-1-103’表示目的ip地址"><a href="#‘192-168-1-103’表示目的ip地址" class="headerlink" title="‘192.168.1.103’表示目的ip地址"></a>‘192.168.1.103’表示目的ip地址</h1><h1 id="8080表示目的端口"><a href="#8080表示目的端口" class="headerlink" title="8080表示目的端口"></a>8080表示目的端口</h1><p>  dest_addr = (‘192.168.1.103’, 8080)  # 注意 是元组，ip是字符串，端口是数字</p>
-<h1 id="3-从键盘获取数据"><a href="#3-从键盘获取数据" class="headerlink" title="3. 从键盘获取数据"></a>3. 从键盘获取数据</h1><p>  send_data = input(“请输入要发送的数据:”)</p>
-<h1 id="4-发送数据到指定的电脑上的指定程序中"><a href="#4-发送数据到指定的电脑上的指定程序中" class="headerlink" title="4. 发送数据到指定的电脑上的指定程序中"></a>4. 发送数据到指定的电脑上的指定程序中</h1><p>  udp_socket.sendto(send_data.encode(‘utf-8’), dest_addr)</p>
-<h1 id="5-关闭套接字"><a href="#5-关闭套接字" class="headerlink" title="5. 关闭套接字"></a>5. 关闭套接字</h1><p>  udp_socket.close()</p>
-<h4 id="2-udp网络程序-发送、接收数据"><a href="#2-udp网络程序-发送、接收数据" class="headerlink" title="2. udp网络程序-发送、接收数据"></a>2. udp网络程序-发送、接收数据</h4><p>代码如下：</p>
-<p>  #coding=utf-8</p>
-<p>  from socket import *</p>
-<h1 id="1-创建udp套接字-1"><a href="#1-创建udp套接字-1" class="headerlink" title="1. 创建udp套接字"></a>1. 创建udp套接字</h1><p>  udp_socket = socket(AF_INET, SOCK_DGRAM)</p>
-<h1 id="2-准备接收方的地址-1"><a href="#2-准备接收方的地址-1" class="headerlink" title="2. 准备接收方的地址"></a>2. 准备接收方的地址</h1><p>  dest_addr = (‘192.168.236.129’, 8080)</p>
-<h1 id="3-从键盘获取数据-1"><a href="#3-从键盘获取数据-1" class="headerlink" title="3. 从键盘获取数据"></a>3. 从键盘获取数据</h1><p>  send_data = input(“请输入要发送的数据:”)</p>
-<h1 id="4-发送数据到指定的电脑上"><a href="#4-发送数据到指定的电脑上" class="headerlink" title="4. 发送数据到指定的电脑上"></a>4. 发送数据到指定的电脑上</h1><p>  udp_socket.sendto(send_data.encode(‘utf-8’), dest_addr)</p>
-<h1 id="5-等待接收对方发送的数据"><a href="#5-等待接收对方发送的数据" class="headerlink" title="5. 等待接收对方发送的数据"></a>5. 等待接收对方发送的数据</h1><p>  recv_data = udp_socket.recvfrom(1024)  # 1024表示本次接收的最大字节数</p>
-<h1 id="6-显示对方发送的数据"><a href="#6-显示对方发送的数据" class="headerlink" title="6. 显示对方发送的数据"></a>6. 显示对方发送的数据</h1><h1 id="接收到的数据recv-data是一个元组"><a href="#接收到的数据recv-data是一个元组" class="headerlink" title="接收到的数据recv_data是一个元组"></a>接收到的数据recv_data是一个元组</h1><h1 id="第1个元素是对方发送的数据"><a href="#第1个元素是对方发送的数据" class="headerlink" title="第1个元素是对方发送的数据"></a>第1个元素是对方发送的数据</h1><h1 id="第2个元素是对方的ip和端口"><a href="#第2个元素是对方的ip和端口" class="headerlink" title="第2个元素是对方的ip和端口"></a>第2个元素是对方的ip和端口</h1><p>  print(recv_data[0].decode(‘gbk’))<br>  print(recv_data[1])</p>
-<h1 id="可以简写成"><a href="#可以简写成" class="headerlink" title="可以简写成"></a>可以简写成</h1><h1 id="recv-data-client-addr-udp-socket-recvfrom-1024"><a href="#recv-data-client-addr-udp-socket-recvfrom-1024" class="headerlink" title="recv_data, client_addr = udp_socket.recvfrom(1024)"></a>recv_data, client_addr = udp_socket.recvfrom(1024)</h1><h1 id="7-关闭套接字"><a href="#7-关闭套接字" class="headerlink" title="7. 关闭套接字"></a>7. 关闭套接字</h1><p>  udp_socket.close()</p>
+<pre><code>#coding=utf-8
 
+from socket import *
+
+# 1. 创建udp套接字
+udp_socket = socket(AF_INET, SOCK_DGRAM)
+
+# 2. 准备接收方的地址
+# &apos;192.168.1.103&apos;表示目的ip地址
+# 8080表示目的端口
+dest_addr = (&apos;192.168.1.103&apos;, 8080)  # 注意 是元组，ip是字符串，端口是数字
+
+# 3. 从键盘获取数据
+send_data = input(&quot;请输入要发送的数据:&quot;)
+
+# 4. 发送数据到指定的电脑上的指定程序中
+udp_socket.sendto(send_data.encode(&apos;utf-8&apos;), dest_addr)
+
+# 5. 关闭套接字
+udp_socket.close()
+</code></pre><h4 id="2-udp网络程序-发送、接收数据"><a href="#2-udp网络程序-发送、接收数据" class="headerlink" title="2. udp网络程序-发送、接收数据"></a>2. udp网络程序-发送、接收数据</h4><p>代码如下：</p>
+<pre><code>#coding=utf-8
+
+from socket import *
+
+# 1. 创建udp套接字
+udp_socket = socket(AF_INET, SOCK_DGRAM)
+
+# 2. 准备接收方的地址
+dest_addr = (&apos;192.168.236.129&apos;, 8080)
+
+# 3. 从键盘获取数据
+send_data = input(&quot;请输入要发送的数据:&quot;)
+
+# 4. 发送数据到指定的电脑上
+udp_socket.sendto(send_data.encode(&apos;utf-8&apos;), dest_addr)
+
+# 5. 等待接收对方发送的数据
+recv_data = udp_socket.recvfrom(1024)  # 1024表示本次接收的最大字节数
+
+# 6. 显示对方发送的数据
+# 接收到的数据recv_data是一个元组
+# 第1个元素是对方发送的数据
+# 第2个元素是对方的ip和端口
+print(recv_data[0].decode(&apos;gbk&apos;))
+print(recv_data[1])
+
+# 可以简写成
+# recv_data, client_addr = udp_socket.recvfrom(1024)
+
+# 7. 关闭套接字
+udp_socket.close()
+</code></pre>
       
     </div>
     
@@ -486,7 +521,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -508,7 +543,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -563,7 +598,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#udp网络程序-发送、接收数据"><span class="nav-number">1.</span> <span class="nav-text">udp网络程序-发送、接收数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-udp网络程序-发送数据"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. udp网络程序-发送数据</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-创建udp套接字"><span class="nav-number"></span> <span class="nav-text">1. 创建udp套接字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-准备接收方的地址"><span class="nav-number"></span> <span class="nav-text">2. 准备接收方的地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#‘192-168-1-103’表示目的ip地址"><span class="nav-number"></span> <span class="nav-text">‘192.168.1.103’表示目的ip地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8080表示目的端口"><span class="nav-number"></span> <span class="nav-text">8080表示目的端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-从键盘获取数据"><span class="nav-number"></span> <span class="nav-text">3. 从键盘获取数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-发送数据到指定的电脑上的指定程序中"><span class="nav-number"></span> <span class="nav-text">4. 发送数据到指定的电脑上的指定程序中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-关闭套接字"><span class="nav-number"></span> <span class="nav-text">5. 关闭套接字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-udp网络程序-发送、接收数据"><span class="nav-number">0.0.1.</span> <span class="nav-text">2. udp网络程序-发送、接收数据</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-创建udp套接字-1"><span class="nav-number"></span> <span class="nav-text">1. 创建udp套接字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-准备接收方的地址-1"><span class="nav-number"></span> <span class="nav-text">2. 准备接收方的地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-从键盘获取数据-1"><span class="nav-number"></span> <span class="nav-text">3. 从键盘获取数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-发送数据到指定的电脑上"><span class="nav-number"></span> <span class="nav-text">4. 发送数据到指定的电脑上</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-等待接收对方发送的数据"><span class="nav-number"></span> <span class="nav-text">5. 等待接收对方发送的数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-显示对方发送的数据"><span class="nav-number"></span> <span class="nav-text">6. 显示对方发送的数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接收到的数据recv-data是一个元组"><span class="nav-number"></span> <span class="nav-text">接收到的数据recv_data是一个元组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第1个元素是对方发送的数据"><span class="nav-number"></span> <span class="nav-text">第1个元素是对方发送的数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第2个元素是对方的ip和端口"><span class="nav-number"></span> <span class="nav-text">第2个元素是对方的ip和端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#可以简写成"><span class="nav-number"></span> <span class="nav-text">可以简写成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#recv-data-client-addr-udp-socket-recvfrom-1024"><span class="nav-number"></span> <span class="nav-text">recv_data, client_addr = udp_socket.recvfrom(1024)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-关闭套接字"><span class="nav-number"></span> <span class="nav-text">7. 关闭套接字</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#udp网络程序-发送、接收数据"><span class="nav-number">1.</span> <span class="nav-text">udp网络程序-发送、接收数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-udp网络程序-发送数据"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. udp网络程序-发送数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-udp网络程序-发送、接收数据"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. udp网络程序-发送、接收数据</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
